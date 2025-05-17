@@ -11,6 +11,7 @@ import TimelineToyGame from "@/components/little-lumi-components/childhood/timel
 import { childhoodData } from "@/data/little-lumis-data/childhood-data"
 import LittleLumiAudioController from "@/components/little-lumi-components/childhood/lil-audio-controller"
 import PolaroidModal from "@/components/little-lumi-components/childhood/polaroid-modal"
+import CustomCursor from "@/components/custom-cursor"
 
 export default function ChildhoodPage() {
   const router = useRouter()
@@ -79,6 +80,21 @@ export default function ChildhoodPage() {
           </p>
         </motion.div>
 
+        {/* Custom cursor */}
+        <AnimatePresence>
+
+          <motion.div
+            key={"default"}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex: 50 }}
+          >
+            <CustomCursor className={""} defaultSize={128} />
+          </motion.div>
+
+        </AnimatePresence>
         <AnimatePresence mode="wait">
           {showGallery && (
             <motion.div
@@ -112,6 +128,11 @@ export default function ChildhoodPage() {
                   className="px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-400 text-white font-medium rounded-full shadow-lg hover:shadow-purple-500/30 transition-all"
                   whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(168, 85, 247, 0.5)" }}
                   whileTap={{ scale: 0.98 }}
+                  data-cursor-hover
+               
+                  data-cursor-color="#A855F7"
+                  data-cursor-text="Start Game"
+                  data-cusor-width="100"
                 >
                   Start Game
                 </motion.button>
