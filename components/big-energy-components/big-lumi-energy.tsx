@@ -27,14 +27,14 @@ const yearData = {
   2014: {
     photos: [
       {
-        src: "/placeholder-dnuut.png",
-        alt: "Remedial orientation",
-        coloredItem: "red backpack",
+        src: "/Big-lumi/2014/Remedial1.jpg",
+        alt: "Remedial photo with KDJ, Dami, Jemimah and Rashidat",
+        coloredItem: "",
       },
       {
-        src: "/placeholder-23rb3.png",
-        alt: "First campus visit",
-        coloredItem: "green notebook",
+        src: "/Big-lumi/2014/Remedial2.jpg",
+        alt: "Jemimah and Lumi in remedial",
+        coloredItem: "",
       },
       {
         src: "/placeholder-dd92g.png",
@@ -63,19 +63,24 @@ const yearData = {
   2015: {
     photos: [
       {
-        src: "/placeholder-g47fl.png",
-        alt: "Freshman orientation",
-        coloredItem: "blue ID card",
+        src: "/Big-lumi/2015/2015-1.jpg",
+        alt: "Ready for class",
+        coloredItem: "black and white",
       },
       {
-        src: "/placeholder-yf4dp.png",
-        alt: "First dorm room",
-        coloredItem: "pink bedspread",
+        src: "/Big-lumi/2015/2015-2.jpg",
+        alt: "Ready with Jemimah",
+        coloredItem: "Black and white shirt",
       },
       {
-        src: "/placeholder-5x0ng.png",
-        alt: "Campus tour",
-        coloredItem: "orange campus map",
+        src: "/Big-lumi/2015/2015-3.jpg",
+        alt: "Going out with Jemmy",
+        coloredItem: "blue ankara top",
+      },
+      {
+        src: "/Big-lumi/2015/2015-4.jpg",
+        alt: "Out with Jemimah",
+        coloredItem: "Blue top",
       },
     ],
     gameItems: [
@@ -135,7 +140,7 @@ const yearData = {
   2017: {
     photos: [
       {
-        src: "/placeholder-gcggw.png",
+        src: "/Big-lumi/2017/2017-1.jpg",
         alt: "Junior year project",
         coloredItem: "green circuit board",
       },
@@ -171,12 +176,12 @@ const yearData = {
   2018: {
     photos: [
       {
-        src: "/placeholder-jm0if.png",
+        src: "/Big-lumi/2018/2018-1.jpg",
         alt: "Final year project",
         coloredItem: "yellow project poster",
       },
       {
-        src: "/placeholder-cz7mq.png",
+        src: "/Big-lumi/2018/2018-2.jpg",
         alt: "Job fair",
         coloredItem: "blue resume folder",
       },
@@ -207,17 +212,17 @@ const yearData = {
   2019: {
     photos: [
       {
-        src: "/university-graduation.png",
+        src: "/Big-lumi/2019/grad1.jpg",
         alt: "Graduation ceremony",
         coloredItem: "blue graduation gown",
       },
       {
-        src: "/placeholder-x30um.png",
+        src: "/Big-lumi/2019/grad2.jpg",
         alt: "Graduation party",
         coloredItem: "pink champagne glass",
       },
       {
-        src: "/placeholder-jm0if.png",
+        src: "/Big-lumi/2019/grad3.jpg",
         alt: "Family celebration",
         coloredItem: "gold graduation cap",
       },
@@ -243,19 +248,24 @@ const yearData = {
   2020: {
     photos: [
       {
-        src: "/placeholder-cz7mq.png",
+        src: "/Big-lumi/2020/NYSC1.jpg",
         alt: "NYSC orientation camp",
-        coloredItem: "green NYSC uniform",
+        coloredItem: "white NYSC uniform",
       },
       {
-        src: "/placeholder-dnuut.png",
-        alt: "Community service project",
-        coloredItem: "red volunteer badge",
+        src: "/Big-lumi/2020/ibadan-1.jpg",
+        alt: "Jemimah and Lumi in Ibadan",
+        coloredItem: "red shirt",
       },
       {
-        src: "/placeholder-5x0ng.png",
-        alt: "NYSC passing out parade",
-        coloredItem: "white NYSC cap",
+        src: "/Big-lumi/2020/ibadan-3.jpg",
+        alt: "Lumi visiting Ibadan",
+        coloredItem: "Pink and Red top",
+      },
+      {
+        src: "/Big-lumi/2020/lagos-2.jpg",
+        alt: "Lumi ",
+        coloredItem: "Red dress",
       },
     ],
     gameItems: [
