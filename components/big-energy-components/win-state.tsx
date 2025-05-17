@@ -113,7 +113,7 @@ export default function WinState({ onClose }: WinStateProps) {
                 }}
               >
                 <img
-                  src="/placeholder.svg?height=300&width=200&query=dancing silhouette with sparkles"
+                  src="/win-state/funky dance!.gif?height=300&width=200&query=dancing silhouette with sparkles"
                   alt="Lumi silhouette dancing"
                   className="h-full object-contain"
                 />

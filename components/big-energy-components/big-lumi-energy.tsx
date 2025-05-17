@@ -104,19 +104,29 @@ const yearData = {
   2016: {
     photos: [
       {
-        src: "/placeholder-gfvyq.png",
-        alt: "Sophomore study session",
-        coloredItem: "purple laptop",
+        src: "/Big-lumi/2016/2016-2.jpg",
+        alt: "Hostel life",
+        coloredItem: "",
       },
       {
-        src: "/placeholder-34kov.png",
-        alt: "Campus festival",
-        coloredItem: "red festival banner",
+        src: "/Big-lumi/2016/2016-3.jpg",
+        alt: "Sunday service",
+        coloredItem: "white top",
       },
       {
-        src: "/placeholder-7nqi0.png",
-        alt: "Department excursion",
-        coloredItem: "gold department logo",
+        src: "/Big-lumi/2016/2016-4.jpg",
+        alt: "Hostel life",
+        coloredItem: "",
+      },
+      {
+        src: "/Big-lumi/2016/2016-5.jpg",
+        alt: "Sunday service",
+        coloredItem: "",
+      },
+      {
+        src: "/Big-lumi/2016/2016-6.jpg",
+        alt: "Jem and Lumi going for Breakfast/lunch with lumi's mum",
+        coloredItem: "",
       },
     ],
     gameItems: [
@@ -141,18 +151,23 @@ const yearData = {
     photos: [
       {
         src: "/Big-lumi/2017/2017-1.jpg",
-        alt: "Junior year project",
-        coloredItem: "green circuit board",
+        alt: "",
+        coloredItem: "",
       },
       {
-        src: "/placeholder-i4ybr.png",
-        alt: "Internship first day",
-        coloredItem: "blue company logo",
+        src: "/Big-lumi/2017/2017-3.jpg",
+        alt: "Going home for the holidays",
+        coloredItem: "",
       },
       {
-        src: "/placeholder-fhxmj.png",
-        alt: "Department competition",
-        coloredItem: "red award ribbon",
+        src: "/Big-lumi/2017/2017-4.jpg",
+        alt: "Dressed up for class",
+        coloredItem: "",
+      },
+      {
+        src: "/Big-lumi/2017/2017-5.jpg",
+        alt: "After long morning of make up we still ended up missing church",
+        coloredItem: "",
       },
     ],
     gameItems: [
