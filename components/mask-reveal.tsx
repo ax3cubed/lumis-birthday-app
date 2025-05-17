@@ -22,20 +22,26 @@ export default function MaskReveal({
 }: MaskRevealProps) {
   const [isHovered, setIsHovered] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
-  const mousePosition = useMousePosition({ targetRef: containerRef })
+  const mousePosition = useMousePosition({ targetRef: containerRef as React.RefObject<HTMLElement> })
   const size = isHovered ? hoverSize : initialSize
 
-  // Use relative coordinates for more accurate positioning
+  // Use relative coordinates for accurate positioning
   const x = mousePosition.relativeX ?? 0
   const y = mousePosition.relativeY ?? 0
 
   return (
     <div ref={containerRef} className="relative w-full h-full overflow-hidden">
+      {/* Base content (grayscale) - always visible */}
+      <div className="absolute top-0 left-0 w-full h-full z-10">{baseContent}</div>
+
+      {/* Reveal content (colored) - masked to show only within the circle */}
       <motion.div
-        className="absolute top-0 left-0 w-full h-full mask-image mask-repeat-no-repeat z-20"
+        className="absolute top-0 left-0 w-full h-full z-20"
         animate={{
           WebkitMaskPosition: `${x - size / 2}px ${y - size / 2}px`,
           WebkitMaskSize: `${size}px`,
+          maskPosition: `${x - size / 2}px ${y - size / 2}px`,
+          maskSize: `${size}px`,
         }}
         transition={{ type: "tween", ease: "backOut", duration: transitionDuration }}
         style={{
@@ -43,14 +49,14 @@ export default function MaskReveal({
             "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='white'/></svg>\")",
           WebkitMaskImage:
             "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='white'/></svg>\")",
+          maskRepeat: "no-repeat",
+          WebkitMaskRepeat: "no-repeat",
         }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="w-full h-full" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-          {revealContent}
-        </div>
+        {revealContent}
       </motion.div>
-
-      <div className="absolute top-0 left-0 w-full h-full z-10">{baseContent}</div>
     </div>
   )
 }

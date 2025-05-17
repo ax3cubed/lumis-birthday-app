@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export default function NextChapter() {
@@ -23,8 +23,9 @@ export default function NextChapter() {
 
         <Link href="/travels" passHref>
           <Button variant="outline" size="lg" className="gap-2">
-            <ArrowLeft className="h-4 w-4" />
+
             <span>Next Adventure Awaits!</span>
+            <ArrowRight className="h-4 w-4 animate-bounce" />
           </Button>
         </Link>
       </div>
