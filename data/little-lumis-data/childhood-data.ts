@@ -121,4 +121,10 @@ export const childhoodData:ChildhoodDataItem[] = [
     funFact: "By 19, Lumi had written her first spooky story in her special moon-shaped notebook.",
     emoji: "📓",
   },
+  {
+    age: 20,
+    image: "/lil-lumi/ch20.jpg",
+    funFact: "By 20, Lumi had written her first spooky story in her special moon-shaped notebook.",
+    emoji: "📓",
+  },
 ]
