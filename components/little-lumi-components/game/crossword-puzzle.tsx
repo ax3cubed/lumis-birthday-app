@@ -917,7 +917,7 @@ export default function CrosswordPuzzle({ onComplete }: CrosswordPuzzleProps) {
 
   // Handle navigation to next page
   const handleNextPage = () => {
-    router.push("/next-chapter")
+    router.push("/big-energy-lumi/")
   }
 
   if (isGenerating) {
@@ -1162,7 +1162,7 @@ export default function CrosswordPuzzle({ onComplete }: CrosswordPuzzleProps) {
                 whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(168, 85, 247, 0.5)" }}
                 whileTap={{ scale: 0.98 }}
               >
-                Next Page <ArrowRight size={18} className="ml-2" />
+                Your Next Adventure Awaits <ArrowRight size={18} className="ml-2" />
               </motion.button>
             </motion.div>
           </motion.div>

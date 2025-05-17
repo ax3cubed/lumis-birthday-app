@@ -30,7 +30,7 @@ export default function GamePage() {
 
   const handleNextLevel = () => {
     // For now, just reload the page to get a new random puzzle
-    window.location.reload()
+    router.push("/big-energy-lumi/")
   }
 
   return (
@@ -71,7 +71,7 @@ export default function GamePage() {
               onClick={handleNextLevel}
               className="px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-400 text-white font-medium rounded-full shadow-lg hover:shadow-purple-500/30 transition-all"
             >
-              Play Again
+              Your next memory awaits!
             </button>
           </motion.div>
         )}
