@@ -36,11 +36,6 @@ const yearData = {
         alt: "Jemimah and Lumi in remedial",
         coloredItem: "",
       },
-      {
-        src: "/placeholder-dd92g.png",
-        alt: "Remedial study group",
-        coloredItem: "yellow textbook",
-      },
     ],
     gameItems: [
       {
@@ -192,18 +187,13 @@ const yearData = {
     photos: [
       {
         src: "/Big-lumi/2018/2018-1.jpg",
-        alt: "Final year project",
-        coloredItem: "yellow project poster",
+        alt: "Photoshoot day",
+        coloredItem: "",
       },
       {
         src: "/Big-lumi/2018/2018-2.jpg",
-        alt: "Job fair",
-        coloredItem: "blue resume folder",
-      },
-      {
-        src: "/university-graduation.png",
-        alt: "Senior class photo",
-        coloredItem: "green department banner",
+        alt: "Photo with Ellion",
+        coloredItem: "",
       },
     ],
     gameItems: [
@@ -228,18 +218,18 @@ const yearData = {
     photos: [
       {
         src: "/Big-lumi/2019/grad1.jpg",
-        alt: "Graduation ceremony",
-        coloredItem: "blue graduation gown",
+        alt: "Final Year week",
+        coloredItem: "",
       },
       {
         src: "/Big-lumi/2019/grad2.jpg",
         alt: "Graduation party",
-        coloredItem: "pink champagne glass",
+        coloredItem: "",
       },
       {
         src: "/Big-lumi/2019/grad3.jpg",
-        alt: "Family celebration",
-        coloredItem: "gold graduation cap",
+        alt: "Final Year week",
+        coloredItem: "",
       },
     ],
     gameItems: [
