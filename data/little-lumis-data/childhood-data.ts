@@ -1,0 +1,98 @@
+export const childhoodData = [
+  {
+    age: 1,
+    image: "/placeholder.svg",
+    funFact: "At age 1, Lumi loved her plush bat toy and would carry it everywhere!",
+    emoji: "🦇",
+    toy: {
+      id: "toy-bat",
+      icon: "🦇",
+      name: "Bat Plushie",
+      targetAge: 1,
+    },
+  },
+  {
+    age: 2,
+    image: "/placeholder.svg",
+    funFact: "By age 2, Lumi could recite the alphabet backwards - spooky smart!",
+    emoji: "🔤",
+    toy: {
+      id: "toy-alphabet",
+      icon: "🔤",
+      name: "Alphabet Blocks",
+      targetAge: 2,
+    },
+  },
+  {
+    age: 3,
+    image: "/placeholder.svg",
+    funFact: "At 3, Lumi had an imaginary friend named 'Shadow' who followed her everywhere.",
+    emoji: "👤",
+    toy: {
+      id: "toy-shadow",
+      icon: "👤",
+      name: "Shadow Puppet",
+      targetAge: 3,
+    },
+  },
+  {
+    age: 4,
+    image: "/placeholder.svg",
+    funFact: "Age 4 was when Lumi first learned to play the tiny toy piano. Spooky melodies only!",
+    emoji: "🎹",
+    toy: {
+      id: "toy-piano",
+      icon: "🎹",
+      name: "Toy Piano",
+      targetAge: 4,
+    },
+  },
+  {
+    age: 5,
+    image: "/placeholder.svg",
+    funFact: "By 5, Lumi had mastered her first jigsaw puzzle - a 100-piece haunted house!",
+    emoji: "🧩",
+    toy: {
+      id: "toy-puzzle",
+      icon: "🧩",
+      name: "Haunted Puzzle",
+      targetAge: 5,
+    },
+  },
+  {
+    age: 6,
+    image: "/placeholder.svg",
+    funFact: "At 6, Lumi started her crystal collection after finding a purple amethyst.",
+    emoji: "💎",
+    toy: {
+      id: "toy-crystal",
+      icon: "💎",
+      name: "Crystal Collection",
+      targetAge: 6,
+    },
+  },
+  {
+    age: 7,
+    image: "/placeholder.svg",
+    funFact: "Age 7 was when Lumi got her first magic wand and started practicing 'spells'.",
+    emoji: "🪄",
+    toy: {
+      id: "toy-wand",
+      icon: "🪄",
+      name: "Magic Wand",
+      targetAge: 7,
+    },
+  },
+  {
+    age: 8,
+    image: "/placeholder.svg",
+    funFact: "By 8, Lumi had written her first spooky story in her special moon-shaped notebook.",
+    emoji: "📓",
+    toy: {
+      id: "toy-notebook",
+      icon: "📓",
+      name: "Moon Notebook",
+      targetAge: 8,
+    },
+  },
+]
