@@ -3,13 +3,14 @@
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Volume2, VolumeX } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 export default function LoveLetter() {
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false)
   const [currentLine, setCurrentLine] = useState(0)
   const [isMuted, setIsMuted] = useState(true)
   const audioRef = useRef<HTMLAudioElement | null>(null)
-
+const router = useRouter()
   // Sample letter content - replace with actual content
   const letterLines = [
     "My dearest Lumi,",
@@ -55,8 +56,11 @@ export default function LoveLetter() {
   }
 
   const handleNextLevel = () => {
-    console.log("Moving to next level")
-    // Add navigation or state change logic here
+    router.push("/final-orb");
+    if (audioRef.current) {
+      audioRef.current.pause()
+      audioRef.current.currentTime = 0
+    }
   }
 
   return (
@@ -115,28 +119,27 @@ export default function LoveLetter() {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="w-full max-w-xl bg-[url('/vintage-paper-texture.png')] bg-cover rounded-lg p-8 shadow-2xl relative overflow-hidden"
+            className="w-full max-w-xl bg-[url('/love/vintage-paper-texture.jpg')] bg-cover rounded-lg p-8 shadow-2xl relative overflow-hidden"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-pink-100/10 to-red-200/10"></div>
 
-            <div className="relative z-10">
+
+            <div className="relative z-10 flex flex-col gap-4 items-start">
               {letterLines.slice(0, currentLine + 1).map((line, index) => (
                 <motion.p
                   key={index}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.2, duration: 0.8 }}
-                  className={`mb-4 ${
-                    index === 0 || index === letterLines.length - 2 || index === letterLines.length - 1
+                  className={`relative ${index === 0 || index === letterLines.length - 2 || index === letterLines.length - 1
                       ? "font-handwriting text-2xl italic"
                       : "font-handwriting text-xl italic"
-                  } text-gray-800`}
+                    } text-gray-800`}
                 >
                   {line}
                 </motion.p>
               ))}
             </div>
-
+            <div className="absolute inset-0 bg-gradient-to-br from-pink-100/10 to-red-200/10"></div>
             {/* Floating hearts background */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
               {Array.from({ length: 15 }).map((_, i) => (
@@ -169,7 +172,7 @@ export default function LoveLetter() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1, duration: 0.5 }}
-                className="absolute bottom-8 left-0 right-0 flex justify-center"
+                className="absolute bottom-8 left-0 z-50 right-0 flex justify-center"
               >
                 <button
                   onClick={handleNextLevel}
