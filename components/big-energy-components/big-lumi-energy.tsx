@@ -9,6 +9,7 @@ import TwoTruthsGame from "@/components/big-energy-components/two-truths-game"
 import WinState from "@/components/big-energy-components/win-state"
 import { Button } from "@/components/ui/button"
 import { useMediaQuery } from "@/hooks/use-media-query"
+import CustomCursor from "@/components/custom-cursor"
 
 // University years data with descriptions
 const uniYears = [
@@ -354,8 +355,26 @@ export default function BigLumiEnergy() {
   const activeYearData = uniYears.find((item) => item.year === activeYear)
   const yearDescription = activeYearData ? activeYearData.description : ""
 
+  // Floating icon positions (client-only)
+  const [iconPositions, setIconPositions] = useState<{x: number, y: number, x2: number, y2: number, duration: number}[]>([])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    // Generate random positions and durations for each icon on mount
+    setIconPositions([
+      ...Array(7).fill(0).map(() => ({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        x2: Math.random() * window.innerWidth,
+        y2: Math.random() * window.innerHeight,
+        duration: 20 + Math.random() * 10,
+      }))
+    ])
+  }, [])
+
   return (
     <div className="relative min-h-screen bg-black text-white py-16 px-4 md:px-8" ref={containerRef}>
+      <CustomCursor defaultSize={48} />
       <AnimatePresence>{winState && <WinState onClose={handleCloseWinState} />}</AnimatePresence>
 
       <motion.h1
@@ -363,15 +382,32 @@ export default function BigLumiEnergy() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
+        data-cursor-hover
+        data-cursor-size="80"
+        data-cursor-color="#a78bfa"
+        data-cursor-text="Big Lumi!"
+        data-cursor-effect="glow rainbow"
       >
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400"
+          data-cursor-hover
+          data-cursor-size="150"
+          data-cursor-color="#f472b6"
+          data-cursor-text="Go Lumi!"
+          data-cursor-effect="neon"
+        >
           Big Lumi Energy
         </span>
       </motion.h1>
 
       <div className="flex flex-col md:flex-row gap-8 max-w-7xl mx-auto">
         {/* Timeline on left for desktop, top for mobile */}
-        <div className={`${isMobile ? "w-full mb-8" : "w-1/4"}`}>
+        <div className={`${isMobile ? "w-full mb-8" : "w-1/4"}`}
+          data-cursor-hover
+          data-cursor-size="56"
+          data-cursor-color="#f472b6"
+          data-cursor-text="Timeline"
+          data-cursor-effect="shadow"
+        >
           <Timeline
             years={uniYears}
             activeYear={activeYear}
@@ -381,7 +417,12 @@ export default function BigLumiEnergy() {
         </div>
 
         {/* Content on right for desktop, bottom for mobile */}
-        <div className={`${isMobile ? "w-full" : "w-3/4"} relative`}>
+        <div className={`${isMobile ? "w-full" : "w-3/4"} relative`}
+          data-cursor-hover
+          data-cursor-size="64"
+          data-cursor-color="#fbbf24"
+          data-cursor-effect="glass"
+        >
           <AnimatePresence mode="wait">
             {!showGame ? (
               <motion.div
@@ -390,6 +431,11 @@ export default function BigLumiEnergy() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4 }}
+                data-cursor-hover
+                data-cursor-size="128"
+                data-cursor-color="#f472b6"
+                data-cursor-text="Memories"
+                data-cursor-effect="blend"
               >
                 <YearContent
                   year={activeYear}
@@ -401,14 +447,19 @@ export default function BigLumiEnergy() {
               </motion.div>
             ) : (
               <motion.div
-                key={`game-content-${activeYear}`} // Add year to key to force re-render
+                key={`game-content-${activeYear}`}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4 }}
+                data-cursor-hover
+                data-cursor-size="128"
+                data-cursor-color="#fbbf24"
+                data-cursor-text="Game!"
+                data-cursor-effect="neon"
               >
                 <TwoTruthsGame
-                  key={activeYear} // Add key to force re-render when year changes
+                  key={activeYear}
                   gameItems={yearData[activeYear as keyof typeof yearData].gameItems}
                   year={activeYear}
                   description={yearDescription}
@@ -429,8 +480,19 @@ export default function BigLumiEnergy() {
               onClick={handlePrevYear}
               disabled={activeYear === uniYears[0].year}
               className="flex items-center gap-2 border-purple-700 bg-transparent text-purple-400 hover:bg-purple-900/20 hover:text-purple-300"
+              data-cursor-hover
+              data-cursor-size="48"
+              data-cursor-color="#a78bfa"
+              data-cursor-text="Previous"
+              data-cursor-effect="invert"
             >
-              <ChevronLeft size={16} />
+              <ChevronLeft size={16}
+                data-cursor-hover
+                data-cursor-size="40"
+                data-cursor-color="#a78bfa"
+                data-cursor-text="Back"
+                data-cursor-effect="shadow"
+              />
               Previous Year
             </Button>
 
@@ -439,9 +501,20 @@ export default function BigLumiEnergy() {
               onClick={handleNextYear}
               disabled={activeYear === uniYears[uniYears.length - 1].year}
               className="flex items-center gap-2 border-purple-700 bg-transparent text-purple-400 hover:bg-purple-900/20 hover:text-purple-300"
+              data-cursor-hover
+              data-cursor-size="48"
+              data-cursor-color="#fbbf24"
+              data-cursor-text="Next"
+              data-cursor-effect="glow"
             >
               Next Year
-              <ChevronRight size={16} />
+              <ChevronRight size={16}
+                data-cursor-hover
+                data-cursor-size="40"
+                data-cursor-color="#fbbf24"
+                data-cursor-text="Next"
+                data-cursor-effect="neon"
+              />
             </Button>
           </div>
         </div>
@@ -449,24 +522,31 @@ export default function BigLumiEnergy() {
 
       {/* Floating university-themed icons */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        {["📚", "☕", "💻", "🎓", "🎭", "🎨", "📝"].map((icon, index) => (
+        {[
+          "📚", "☕", "💻", "🎓", "🎭", "🎨", "📝"
+        ].map((icon, index) => (
           <motion.div
             key={index}
             className="absolute text-2xl opacity-30"
             initial={{
-              x: Math.random() * 100,
-              y: Math.random() * 100,
+              x: iconPositions[index]?.x ?? 0,
+              y: iconPositions[index]?.y ?? 0,
             }}
             animate={{
-              x: [Math.random() * window.innerWidth, Math.random() * window.innerWidth],
-              y: [Math.random() * window.innerHeight, Math.random() * window.innerHeight],
+              x: [iconPositions[index]?.x ?? 0, iconPositions[index]?.x2 ?? 100],
+              y: [iconPositions[index]?.y ?? 0, iconPositions[index]?.y2 ?? 100],
               rotate: [0, 360],
             }}
             transition={{
-              duration: 20 + Math.random() * 10,
+              duration: iconPositions[index]?.duration ?? 25,
               repeat: Number.POSITIVE_INFINITY,
               repeatType: "reverse",
             }}
+            data-cursor-hover
+            data-cursor-size="40"
+            data-cursor-color="#a78bfa"
+            data-cursor-text="Fun!"
+            data-cursor-effect="rainbow"
           >
             {icon}
           </motion.div>

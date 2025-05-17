@@ -25,13 +25,17 @@ import {
 interface CustomCursorProps {
   className?: string
   defaultSize?: number
+  textSize?: number // px, for text in cursor
+  circleBgColor?: string // fallback background color
+  circleOpacity?: number // fallback opacity
+  mouseEffects?: string[] // e.g. ["glow", "shadow", "blend", ...]
 }
 
-export default function CustomCursor({ className, defaultSize = 32 }: CustomCursorProps) {
+export default function CustomCursor({ className, defaultSize = 32, textSize, circleBgColor, circleOpacity, mouseEffects = [] }: CustomCursorProps) {
   const cursorOuterRef = useRef<HTMLDivElement>(null)
   const cursorInnerRef = useRef<HTMLDivElement>(null)
-  const requestRef = useRef<number>()
-  const previousTimeRef = useRef<number>()
+  const requestRef = useRef<number | null>(null)
+  const previousTimeRef = useRef<number | null>(null)
 
   // Jotai state
   const [cursorPosition, setCursorPosition] = useAtom(cursorPositionAtom)
@@ -111,6 +115,7 @@ export default function CustomCursor({ className, defaultSize = 32 }: CustomCurs
           // Apply the clip-path
           const clipPathValue = `circle(${getOuterSize() / 2}px at ${cursorPosition.x}px ${cursorPosition.y}px)`
           targetElement.style.clipPath = clipPathValue
+          // @ts-ignore: webkitClipPath is supported in browsers
           targetElement.style.webkitClipPath = clipPathValue
         }
       }
@@ -269,6 +274,7 @@ export default function CustomCursor({ className, defaultSize = 32 }: CustomCurs
           const targetElement = document.getElementById(clipTarget)
           if (targetElement) {
             targetElement.style.clipPath = "circle(0)"
+            // @ts-ignore: webkitClipPath is supported in browsers
             targetElement.style.webkitClipPath = "circle(0)"
             targetElement.style.visibility = "hidden"
             targetElement.style.opacity = "0"
@@ -337,53 +343,97 @@ export default function CustomCursor({ className, defaultSize = 32 }: CustomCurs
 
   if (!isVisible) return null
 
-  // Generate filter style based on the filter type
+  // Generate filter style based on the filter type and mouseEffects
   const getFilterStyle = () => {
-    if (!cursorFilter) return {}
-
-    switch (cursorFilter) {
-      case "invert":
-        return { filter: "invert(1)" }
-      case "sepia":
-        return { filter: "sepia(1)" }
-      case "grayscale":
-        return { filter: "grayscale(1)" }
-      case "blur":
-        return { filter: "blur(2px)" }
-      case "brightness":
-        return { filter: "brightness(1.5)" }
-      case "contrast":
-        return { filter: "contrast(1.5)" }
-      case "hue-rotate":
-        return { filter: "hue-rotate(90deg)" }
-      case "saturate":
-        return { filter: "saturate(2)" }
-      default:
-        return { filter: cursorFilter } // Allow custom filter values
+    let style: any = {}
+    if (cursorFilter) {
+      switch (cursorFilter) {
+        case "invert":
+          style.filter = "invert(1)"
+          break
+        case "sepia":
+          style.filter = "sepia(1)"
+          break
+        case "grayscale":
+          style.filter = "grayscale(1)"
+          break
+        case "blur":
+          style.filter = "blur(2px)"
+          break
+        case "brightness":
+          style.filter = "brightness(1.5)"
+          break
+        case "contrast":
+          style.filter = "contrast(1.5)"
+          break
+        case "hue-rotate":
+          style.filter = "hue-rotate(90deg)"
+          break
+        case "saturate":
+          style.filter = "saturate(2)"
+          break
+        default:
+          style.filter = cursorFilter
+      }
     }
+    // Mouse effects
+    if (mouseEffects.includes("invert")) style.filter = (style.filter || "") + " invert(1)"
+    if (mouseEffects.includes("blur")) style.filter = (style.filter || "") + " blur(2px)"
+    if (mouseEffects.includes("grayscale")) style.filter = (style.filter || "") + " grayscale(1)"
+    if (mouseEffects.includes("hue-rotate")) style.filter = (style.filter || "") + " hue-rotate(90deg)"
+    if (mouseEffects.includes("saturate")) style.filter = (style.filter || "") + " saturate(2)"
+    if (mouseEffects.includes("contrast")) style.filter = (style.filter || "") + " contrast(1.5)"
+    if (mouseEffects.includes("brightness")) style.filter = (style.filter || "") + " brightness(1.5)"
+    return style
+  }
+
+  // Mouse effect box shadows
+  const getBoxShadow = () => {
+    let shadow = ""
+    if (mouseEffects.includes("glow")) shadow += "0 0 32px 8px #a78bfa, ";
+    if (mouseEffects.includes("shadow")) shadow += "0 4px 24px 0 rgba(0,0,0,0.18), ";
+    if (mouseEffects.includes("neon")) shadow += "0 0 16px 4px #00fff7, 0 0 32px 8px #00fff7, ";
+    if (mouseEffects.includes("rainbow")) shadow += "0 0 24px 8px #f472b6, 0 0 24px 8px #facc15, 0 0 24px 8px #34d399, 0 0 24px 8px #60a5fa, ";
+    if (mouseEffects.includes("glass")) shadow += "0 4px 32px 0 rgba(255,255,255,0.18), ";
+    if (shadow.endsWith(", ")) shadow = shadow.slice(0, -2)
+    return shadow || undefined
+  }
+
+  // Mouse effect blend modes
+  const getBlendMode = () => {
+    if (mouseEffects.includes("blend")) return "multiply"
+    if (mouseEffects.includes("glass")) return "overlay"
+    return undefined
+  }
+
+  // Mouse effect background
+  const getBg = () => {
+    if (mouseEffects.includes("rainbow")) return "linear-gradient(135deg, #f472b6, #facc15, #34d399, #60a5fa)"
+    if (mouseEffects.includes("neon")) return "#00fff7"
+    if (mouseEffects.includes("glass")) return "rgba(255,255,255,0.12)"
+    return undefined
   }
 
   // Calculate cursor sizes
   const getOuterSize = () => {
     if (cursorSize) return cursorSize
-    if (cursorText) return isHovering ? 64 : defaultSize
-    return isHovering ? 64 : defaultSize
+    if (cursorText) return isHovering ? 128 : defaultSize
+    return isHovering ? 128 : defaultSize
   }
-
   const getInnerSize = () => {
-    if (cursorSize) return cursorSize / 4
+    if (cursorSize) return Math.max(8, cursorSize / 4)
     return 8
   }
-
   const outerSize = getOuterSize()
   const innerSize = getInnerSize()
-  const borderWidth = cursorSize ? Math.max(2, Math.floor(cursorSize / 16)) : 2
-
-  // Check if torch effect should be applied
+  const borderWidth = 2
   const isTorch = className?.includes("cursor-torch")
-
-  // Increase torch size for game mode
   const torchSize = isTorch ? 200 : outerSize
+
+  // Use prop or state for bg/opacity
+  const effectiveBgColor = cursorBgColor || circleBgColor || (mouseEffects.includes("glass") ? "rgba(255,255,255,0.12)" : undefined) || "transparent"
+  const effectiveOpacity = cursorOpacity ?? circleOpacity ?? 1
+  const effectiveTextSize = textSize || Math.max(16, Math.floor(outerSize / 5))
 
   return (
     <>
@@ -391,7 +441,7 @@ export default function CustomCursor({ className, defaultSize = 32 }: CustomCurs
       <div
         ref={cursorOuterRef}
         className={cn(
-          "fixed top-0 left-0 pointer-events-none z-50 rounded-full transition-all duration-100 ease-out",
+          "fixed top-0 left-0 pointer-events-none z-50 rounded-full transition-all duration-100 ease-out flex items-center justify-center",
           isActive && "scale-90",
           isExclusion && "mix-blend-normal",
           isTorch && "cursor-torch-effect",
@@ -404,9 +454,16 @@ export default function CustomCursor({ className, defaultSize = 32 }: CustomCurs
           width: `${isTorch ? torchSize : outerSize}px`,
           height: `${isTorch ? torchSize : outerSize}px`,
           border: `${borderWidth}px solid ${cursorColor || "#ffffff"}`,
-          boxShadow: isTorch
+          boxShadow: getBoxShadow() || (isTorch
             ? "0 0 40px 20px rgba(255, 255, 255, 0.3), inset 0 0 30px rgba(255, 255, 255, 0.3)"
-            : "none",
+            : isActive
+            ? "0 0 16px 4px rgba(168, 85, 247, 0.3)"
+            : isHovering
+            ? "0 0 24px 8px rgba(139, 92, 246, 0.2)"
+            : "none"),
+          background: getBg(),
+          mixBlendMode: getBlendMode(),
+          transition: "box-shadow 0.2s, border-color 0.2s, background 0.2s, width 0.2s, height 0.2s",
           ...getFilterStyle(),
         }}
       >
@@ -415,8 +472,16 @@ export default function CustomCursor({ className, defaultSize = 32 }: CustomCurs
           <div
             className="absolute inset-0 rounded-full"
             style={{
-              backgroundColor: cursorBgColor || (isTorch ? "rgba(255, 255, 255, 0.15)" : "transparent"),
-              opacity: cursorOpacity,
+              background:
+                isTorch
+                  ? "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.08) 80%, transparent 100%)"
+                  : isActive
+                  ? "rgba(168, 85, 247, 0.12)"
+                  : isHovering
+                  ? "rgba(139, 92, 246, 0.10)"
+                  : effectiveBgColor,
+              opacity: effectiveOpacity,
+              transition: "background 0.2s, opacity 0.2s",
             }}
           />
         )}
@@ -424,15 +489,22 @@ export default function CustomCursor({ className, defaultSize = 32 }: CustomCurs
         {/* Text centered in cursor */}
         {cursorText && (
           <div
-            className="absolute inset-0 rounded-full flex items-center justify-center"
+            className="absolute inset-0 rounded-full flex items-center justify-center overflow-hidden"
             style={{
-              backgroundColor: cursorBgColor || "rgba(0, 0, 0, 0.7)",
-              opacity: cursorOpacity,
+              backgroundColor: effectiveBgColor,
+              opacity: effectiveOpacity,
               color: "#ffffff",
-              fontSize: `${Math.max(12, Math.floor(outerSize / 4))}px`,
+              fontSize: `${effectiveTextSize}px`,
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              textAlign: 'center',
+              transition: "background 0.2s, opacity 0.2s, font-size 0.2s",
             }}
           >
-            <span className="font-medium whitespace-nowrap">{cursorText}</span>
+            <span className="font-medium whitespace-nowrap w-full text-center" style={{lineHeight: 1}}>{cursorText}</span>
           </div>
         )}
 
@@ -461,9 +533,19 @@ export default function CustomCursor({ className, defaultSize = 32 }: CustomCurs
           style={{
             transform: `translate(${cursorPosition.x}px, ${cursorPosition.y}px) translate(-50%, -50%)`,
             willChange: "transform",
-            backgroundColor: cursorColor || "#ffffff",
+            background: isActive
+              ? "radial-gradient(circle at 50% 50%, #a855f7 0%, #7c3aed 100%)"
+              : isHovering
+              ? "radial-gradient(circle at 50% 50%, #c4b5fd 0%, #a78bfa 100%)"
+              : cursorColor || "#ffffff",
             width: `${innerSize}px`,
             height: `${innerSize}px`,
+            boxShadow: getBoxShadow() || (isActive
+              ? "0 0 8px 2px #a855f7, 0 0 2px 1px #7c3aed"
+              : isHovering
+              ? "0 0 8px 2px #a78bfa"
+              : "none"),
+            transition: "background 0.2s, box-shadow 0.2s, width 0.2s, height 0.2s",
             ...getFilterStyle(),
           }}
         >
