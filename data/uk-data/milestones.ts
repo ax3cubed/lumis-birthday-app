@@ -1,5 +1,6 @@
 import type { Milestone } from "@/types/milestone"
 
+
 export const milestones: Milestone[] = [
   {
     id: 1,
@@ -13,6 +14,22 @@ export const milestones: Milestone[] = [
       "Landing at Heathrow with two suitcases and a heart full of dreams. The air felt different, crisp and full of possibility.",
     quote: "I remember clutching my passport so tightly, wondering if I'd made the right decision.",
     tags: ["Beginning", "Heathrow", "Excitement"],
+    mediaList: [
+      {
+        alt: "Heathrow Airport arrival hall",
+        src: "/media/first-arrival.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "First view of London skyline",
+        src: "/media/london-skyline.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      }
+    ],
   },
   {
     id: 2,
@@ -26,6 +43,15 @@ export const milestones: Milestone[] = [
       "Walking through the campus for the first time, getting lost between buildings, and finally finding my department. The architecture was so different from back home.",
     quote: "The campus was huge! I must have walked in circles for an hour before finding the right building.",
     tags: ["University", "Campus", "Student Life"],
+    mediaList: [
+      {
+        alt: "University campus buildings",
+        src: "/media/university-campus.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 3,
@@ -40,6 +66,15 @@ export const milestones: Milestone[] = [
     quote:
       "Four strangers from four different countries trying to figure out British appliances - it was chaos but so much fun.",
     tags: ["Housing", "Flatmates", "Student Life"],
+    mediaList: [
+      {
+        alt: "Shared student flat kitchen",
+        src: "/media/shared-flat.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 4,
@@ -53,6 +88,15 @@ export const milestones: Milestone[] = [
       "Celebrated my birthday in a new country for the first time. My flatmates surprised me with a cake and took me to a proper British pub.",
     quote: "They sang 'Happy Birthday' so loudly that the entire pub joined in. I was mortified but secretly loved it.",
     tags: ["Celebration", "Friends", "Pub"],
+    mediaList: [
+      {
+        alt: "Birthday cake in a pub",
+        src: "/media/first-birthday.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 5,
@@ -67,6 +111,15 @@ export const milestones: Milestone[] = [
     quote: "Their family traditions were so different from mine, but they made me feel like I belonged.",
     weatherEffect: "snow",
     tags: ["Christmas", "Traditions", "Family"],
+    mediaList: [
+      {
+        alt: "Christmas dinner table",
+        src: "/media/first-christmas.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 6,
@@ -81,6 +134,15 @@ export const milestones: Milestone[] = [
     quote:
       "The cathedral was magnificent, but I learned my lesson about always carrying an umbrella in England, regardless of the forecast.",
     tags: ["Travel", "Cathedral", "Day Trip"],
+    mediaList: [
+      {
+        alt: "Peterborough Cathedral exterior",
+        src: "/media/peterborough-cathedral.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 7,
@@ -94,6 +156,15 @@ export const milestones: Milestone[] = [
       "The weeks before midterms were intense. Practically lived in the university library, surviving on vending machine coffee and biscuits.",
     quote: "I think I saw more sunrises that month than I had in my entire life before.",
     tags: ["University", "Studies", "Stress"],
+    mediaList: [
+      {
+        alt: "Student studying late at library",
+        src: "/media/late-night-studies.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 8,
@@ -107,6 +178,15 @@ export const milestones: Milestone[] = [
       "Finally found my own little studio apartment. It was tiny but it was mine. The landlord was surprisingly nice and helped me set up everything.",
     quote: "The moment I got my keys, I danced around my empty apartment like a fool. Freedom!",
     tags: ["Housing", "Independence", "Milestone"],
+    mediaList: [
+      {
+        alt: "Small studio apartment interior",
+        src: "/media/first-apartment.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 9,
@@ -120,6 +200,15 @@ export const milestones: Milestone[] = [
       "Weekend trip to London with university friends. We did all the touristy things - Big Ben, London Eye, Buckingham Palace, and got lost on the Tube multiple times.",
     quote: "We walked so much that my feet were absolutely killing me, but I wouldn't have missed it for the world.",
     tags: ["London", "Tourism", "Friends"],
+    mediaList: [
+      {
+        alt: "London Eye and Big Ben",
+        src: "/media/london-hangout.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 10,
@@ -133,6 +222,15 @@ export const milestones: Milestone[] = [
       "My British classmate insisted I try something called a 'sausage roll' from Greggs. Now it's my guilty pleasure every Friday morning.",
     quote: "I don't understand why everyone makes such a big deal about... oh. OH. Now I get it.",
     tags: ["Food", "British Culture", "Discovery"],
+    mediaList: [
+      {
+        alt: "Greggs sausage roll",
+        src: "/media/greggs-sausage-roll.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 11,
@@ -146,6 +244,15 @@ export const milestones: Milestone[] = [
       "Visited Manchester for a weekend. The industrial architecture was fascinating, and I finally understood why people are so passionate about football here.",
     quote: "I accidentally wore the wrong team's colors in a pub. The looks I got! Never making that mistake again.",
     tags: ["Travel", "Manchester", "Football"],
+    mediaList: [
+      {
+        alt: "Manchester cityscape",
+        src: "/media/manchester-trip.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 12,
@@ -159,6 +266,15 @@ export const milestones: Milestone[] = [
       "Day trip to Brighton Beach. It wasn't as warm as beaches back home, but there was something charming about the pebbles and the pier.",
     quote: "I was the only one brave enough to dip my toes in the water. It was freezing!",
     tags: ["Beach", "Brighton", "Summer"],
+    mediaList: [
+      {
+        alt: "Brighton Beach and pier",
+        src: "/media/brighton-beach.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 13,
@@ -173,6 +289,15 @@ export const milestones: Milestone[] = [
     quote:
       "My Yorkshire puddings didn't rise, but my friends pretended they were perfect. That's when I knew they were keepers.",
     tags: ["Birthday", "Cooking", "Friends"],
+    mediaList: [
+      {
+        alt: "Dinner party at apartment",
+        src: "/media/second-birthday.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 14,
@@ -186,6 +311,15 @@ export const milestones: Milestone[] = [
       "Got invited to a British wedding. The hats! The traditions! The dancing! It was so different from weddings in my country.",
     quote: "I caught the bouquet and didn't know whether to be embarrassed or proud. Everyone cheered so loudly!",
     tags: ["Wedding", "Traditions", "Celebration"],
+    mediaList: [
+      {
+        alt: "British wedding celebration",
+        src: "/media/first-wedding.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 15,
@@ -200,6 +334,15 @@ export const milestones: Milestone[] = [
     quote:
       "Standing in that crowd, singing songs I've loved for years, I felt completely at home for the first time since arriving.",
     tags: ["Music", "Concert", "London"],
+    mediaList: [
+      {
+        alt: "Concert crowd at O2 Arena",
+        src: "/media/first-concert.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 16,
@@ -214,6 +357,15 @@ export const milestones: Milestone[] = [
     quote: "I was like a child, catching snowflakes on my tongue and making snow angels. No regrets!",
     weatherEffect: "snow",
     tags: ["Snow", "Winter", "Joy"],
+    mediaList: [
+      {
+        alt: "Snowman in the park",
+        src: "/media/first-snow.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 17,
@@ -228,6 +380,15 @@ export const milestones: Milestone[] = [
     quote: "Nothing says 'I'm settled' like having enough chairs to invite people over for dinner.",
     weatherEffect: "snow",
     tags: ["Christmas", "Friends", "Hosting"],
+    mediaList: [
+      {
+        alt: "Christmas dinner with friends",
+        src: "/media/second-christmas.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 18,
@@ -242,6 +403,15 @@ export const milestones: Milestone[] = [
     quote: "I finally understand why British people talk about weather so much. It's a genuine emotional journey.",
     weatherEffect: "rain",
     tags: ["Weather", "Adaptation", "Learning"],
+    mediaList: [
+      {
+        alt: "Rainy street with umbrellas",
+        src: "/media/rain-rage.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 19,
@@ -256,6 +426,15 @@ export const milestones: Milestone[] = [
     quote:
       "A customer asked if I could 'pop the kettle on' and I looked for someone named Kettle. My manager still teases me about it.",
     tags: ["Work", "Language", "Culture"],
+    mediaList: [
+      {
+        alt: "Coffee shop counter",
+        src: "/media/first-job.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 20,
@@ -270,6 +449,15 @@ export const milestones: Milestone[] = [
     quote:
       "Standing by the docks, watching ships come and go, I thought about my own journey to this country and how far I'd come.",
     tags: ["Travel", "Southampton", "Reflection"],
+    mediaList: [
+      {
+        alt: "Southampton harbor",
+        src: "/media/southampton.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 21,
@@ -283,6 +471,15 @@ export const milestones: Milestone[] = [
       "Finally graduated! Wearing the cap and gown, taking photos with friends, and celebrating all our hard work. My parents flew in for the ceremony.",
     quote: "Hearing my name called and walking across that stage was terrifying and exhilarating all at once.",
     tags: ["Graduation", "Achievement", "Family"],
+    mediaList: [
+      {
+        alt: "Graduation ceremony",
+        src: "/media/graduation.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 22,
@@ -296,6 +493,15 @@ export const milestones: Milestone[] = [
       "Third birthday in the UK. Celebrated with a weekend trip to the Cotswolds. Stayed in a charming cottage and explored the countryside.",
     quote: "Three years ago, I couldn't have imagined feeling so at home in this country. What a journey it's been.",
     tags: ["Birthday", "Cotswolds", "Reflection"],
+    mediaList: [
+      {
+        alt: "Cotswolds countryside",
+        src: "/media/third-birthday-cotswolds.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 23,
@@ -309,6 +515,15 @@ export const milestones: Milestone[] = [
       "Took a week off to explore my own city as a tourist. Discovered hidden gems I'd walked past a hundred times without noticing.",
     quote: "Sometimes you need to look at familiar places with fresh eyes to truly appreciate them.",
     tags: ["Exploration", "City", "Discovery"],
+    mediaList: [
+      {
+        alt: "Hidden city gem",
+        src: "/media/mini-staycation.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 24,
@@ -323,6 +538,15 @@ export const milestones: Milestone[] = [
     quote:
       "From curry houses to fish and chip shops, we're eating our way through every cuisine this city has to offer.",
     tags: ["Food", "Friends", "Tradition"],
+    mediaList: [
+      {
+        alt: "Friends at a restaurant",
+        src: "/media/outings.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 25,
@@ -336,6 +560,15 @@ export const milestones: Milestone[] = [
       "My partner proposed at the spot where we had our first date. Complete surprise - I was speechless (before saying yes, of course).",
     quote: "In that moment, I knew for certain that this country had become my home in every sense of the word.",
     tags: ["Love", "Engagement", "Milestone"],
+    mediaList: [
+      {
+        alt: "Engagement ring and hands",
+        src: "/media/proposal.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 26,
@@ -350,6 +583,15 @@ export const milestones: Milestone[] = [
     quote:
       "Signing those papers made it official - this country isn't just where I live, it's where I've built my life and future.",
     tags: ["Wedding", "Love", "Milestone", "Family"],
+    mediaList: [
+      {
+        alt: "Civil wedding ceremony",
+        src: "/media/civil-wedding.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 27,
@@ -365,6 +607,15 @@ export const milestones: Milestone[] = [
       "Looking around the table at all these people who've become my family, I couldn't help but feel overwhelmingly grateful.",
     weatherEffect: "snow",
     tags: ["Christmas", "Family", "Love"],
+    mediaList: [
+      {
+        alt: "Christmas dinner with family",
+        src: "/media/fourth-christmas.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
   {
     id: 28,
@@ -379,5 +630,14 @@ export const milestones: Milestone[] = [
     quote:
       "Sometimes the best adventures are the ones you don't plan. This country still surprises me in the best ways.",
     tags: ["Adventure", "Spontaneity", "Discovery"],
+    mediaList: [
+      {
+        alt: "Village pub exterior",
+        src: "/media/random-village-pub.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+    ],
   },
 ]

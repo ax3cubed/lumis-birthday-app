@@ -71,7 +71,7 @@ export default function YearContent({ year, description, data, onPlayGame, isCom
       </motion.div>
 
       {/* Photo Gallery with Parallax */}
-      <div ref={galleryRef} className="relative overflow-hidden rounded-lg mb-8 h-[300px] md:h-[400px]">
+      <div ref={galleryRef} className="relative overflow-hidden rounded-lg mb-8 h-[300px] md:h-[400px] bg-black">
         <div className="absolute inset-0 flex items-center justify-center">
           {data.photos.map((photo, index) => (
             <motion.div
@@ -89,12 +89,17 @@ export default function YearContent({ year, description, data, onPlayGame, isCom
             >
               <div className="relative w-full h-full">
                 {/* Black and white image with colored item */}
-                <div className="absolute inset-0 filter grayscale">
-                  <img src={photo.src || "/placeholder.svg"} alt={photo.alt} className="w-full h-full object-cover" />
+                <div className="absolute inset-0">
+                  <img 
+                    src={photo.src || "/placeholder.svg"} 
+                    alt={photo.alt} 
+                    className="w-full h-full object-cover grayscale" 
+                    style={{ filter: 'grayscale(1) brightness(0.85)' }}
+                  />
                 </div>
 
                 {/* Colored item overlay */}
-                <div className="absolute inset-0">
+                <div className="absolute inset-0 pointer-events-none">
                   <img
                     src={photo.src || "/placeholder.svg"}
                     alt={`${photo.alt} - ${photo.coloredItem} in color`}

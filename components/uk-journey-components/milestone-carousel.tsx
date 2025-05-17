@@ -10,35 +10,29 @@ interface MilestoneCarouselProps {
 }
 
 export default function MilestoneCarousel({ milestone }: MilestoneCarouselProps) {
-  // Create carousel items with just images
-  const carouselItems = [
-    {
-      id: 1,
-      image: milestone.image || "/placeholder-7jmze.png",
-      title: milestone.title, // Keep title for accessibility but don't display it
-    },
-    {
-      id: 2,
-      image: "/placeholder-4h6wj.png",
-      title: "The Experience",
-    },
-    {
-      id: 3,
-      image: "/placeholder-gjooc.png",
-      title: milestone.date,
-    },
-  ]
+  const carouselItems = milestone.mediaList || []
 
   // Custom carousel items with images only
   const customItems = carouselItems.map((item) => ({
     ...item,
     // Custom rendering for each carousel item - just the image
     render: () => (
-      <div className="relative w-full h-full">
-        <div className="absolute inset-0 z-0">
-          <Image src={item.image || "/placeholder.svg"} alt={item.title} fill className="object-cover" priority />
-        </div>
-      </div>
+
+      <>
+        {item.mediaType === "image" && (
+          <div className="relative w-full h-full">
+            <div className="absolute inset-0 z-0">
+              <Image src={item.src || "/placeholder.svg"} alt={item.alt} fill className="object-cover" priority />
+            </div>
+          </div>
+        )}
+        {item.mediaType === "video" && (
+          <video className="w-full h-full object-cover" controls>
+            <source src={item.src} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        )}
+      </>
     ),
   }))
 
