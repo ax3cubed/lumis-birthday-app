@@ -8,6 +8,7 @@ import ThreeScene from "@/components/travels-components/three-scene"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import ImageSidebar from "@/components/travels-components/image-sidebar"
 import ImageCarousel from "@/components/travels-components/image-carousel"
+import { useRouter } from "next/navigation"
 
 // Define city data
 const cities = [
@@ -131,7 +132,7 @@ export default function WorldExplorer() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
   const [carouselOpen, setCarouselOpen] = useState(false)
   const [selectedImageIndex, setSelectedImageIndex] = useState(0)
-
+  const router = useRouter()
   // Preload images
   useEffect(() => {
     const imagePromises = cities.map((city) => {
@@ -275,6 +276,29 @@ export default function WorldExplorer() {
                 </Button>
               </motion.div>
             ))}
+  <motion.div
+                
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.1 * cities.length,
+                }}
+              >
+                <Button
+                  variant={"ghost"}
+                  className={`relative h-14 w-32 overflow-hidden border-2 border-pink-500"
+                    }`}
+                  onClick={() => router.push("/love")}
+                  disabled={isTransitioning}
+                >
+                  <div
+                    className="absolute inset-0 bg-cover bg-center opacity-50 bg-slate-600"
+                   
+                  />
+                  <span className="relative z-10 font-bold">Unto the next!</span>
+                </Button>
+              </motion.div>
           </div>
         </div>
       </div>
