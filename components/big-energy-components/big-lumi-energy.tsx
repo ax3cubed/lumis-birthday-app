@@ -10,6 +10,7 @@ import WinState from "@/components/big-energy-components/win-state"
 import { Button } from "@/components/ui/button"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import CustomCursor from "@/components/custom-cursor"
+import { useRouter } from "next/navigation"
 
 // University years data with descriptions
 const uniYears = [
@@ -285,7 +286,7 @@ export default function BigLumiEnergy() {
   const [winState, setWinState] = useState(false)
   const [completedYears, setCompletedYears] = useState<number[]>([])
   const [gameStates, setGameStates] = useState<Record<number, boolean>>({})
-
+  const router = useRouter()
   const isMobile = useMediaQuery("(max-width: 768px)")
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -324,6 +325,9 @@ export default function BigLumiEnergy() {
 
   const handleShowGame = () => {
     setShowGame(true)
+    if (completedYears.length === uniYears.length - 1) {
+      router.push("/uk-journey")
+    }
   }
 
   const handleBackToYear = () => {
@@ -356,7 +360,7 @@ export default function BigLumiEnergy() {
   const yearDescription = activeYearData ? activeYearData.description : ""
 
   // Floating icon positions (client-only)
-  const [iconPositions, setIconPositions] = useState<{x: number, y: number, x2: number, y2: number, duration: number}[]>([])
+  const [iconPositions, setIconPositions] = useState<{ x: number, y: number, x2: number, y2: number, duration: number }[]>([])
 
   useEffect(() => {
     if (typeof window === 'undefined') return

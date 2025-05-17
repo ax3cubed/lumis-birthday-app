@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useRouter } from "next/navigation"
 import { useAudio } from "@/hooks/little-lumis-hooks/use-audio"
-import { useToyMatching } from "@/hooks/little-lumis-hooks/use-toy-matching"
 import StarBackground from "@/components/little-lumi-components/childhood/star-background"
 import CircularGallery from "@/components/little-lumi-components/childhood/circular-gallery"
 import TimelineToyGame from "@/components/little-lumi-components/childhood/timeline-toy-game"
@@ -56,10 +55,6 @@ export default function ChildhoodPage() {
     router.push("/little-lumi/game")
   }
 
-  const handleComplete = () => {
-    // Navigate to next chapter
-    router.push("/next-chapter")
-  }
 
   return (
     <main className="relative min-h-screen w-full overflow-hidden">

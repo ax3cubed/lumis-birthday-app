@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useMediaQuery } from "@/hooks/use-media-query"
+import { useRouter } from "next/navigation"
 
 interface Photo {
   src: string
@@ -35,7 +36,6 @@ export default function YearContent({ year, description, data, onPlayGame, isCom
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0)
   const galleryRef = useRef<HTMLDivElement>(null)
   const isMobile = useMediaQuery("(max-width: 768px)")
-
   const nextPhoto = () => {
     setCurrentPhotoIndex((prev) => (prev + 1) % data.photos.length)
   }
@@ -152,15 +152,19 @@ export default function YearContent({ year, description, data, onPlayGame, isCom
       >
         <Button
           onClick={onPlayGame}
-          className={`${
-            isCompleted
+          data-cursor-hover
+          data-cursor-color="#A855F7"
+          data-cursor-text={isCompleted ? "Next Adventure" : "Play Game"}
+          data-cursor-size="140"
+          data-cursor-effect="glow rainbow"
+          className={`${isCompleted
               ? "bg-gradient-to-r from-green-700 to-emerald-600 hover:from-green-600 hover:to-emerald-500"
               : "bg-gradient-to-r from-purple-800 to-pink-700 hover:from-purple-700 hover:to-pink-600"
-          } text-white px-8 py-6 rounded-lg shadow-lg border border-purple-500/30 flex items-center gap-2`}
+            } text-white px-8 py-6 rounded-lg shadow-lg border border-purple-500/30 flex items-center gap-2`}
         >
           {isCompleted ? (
             <>
-              <span>✓</span> Completed: Play Again
+              <span>✓</span> Completed: Onto the next!
             </>
           ) : (
             <>
