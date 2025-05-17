@@ -128,7 +128,7 @@ export default function WorldExplorer() {
   const [currentCityIndex, setCurrentCityIndex] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true)
   const [carouselOpen, setCarouselOpen] = useState(false)
   const [selectedImageIndex, setSelectedImageIndex] = useState(0)
 
@@ -172,6 +172,13 @@ export default function WorldExplorer() {
 
   const currentCity = cities[currentCityIndex]
 
+  useEffect(() => {
+    // Reset sidebar state when city changes
+    setIsSidebarOpen(true)
+    setCarouselOpen(false)
+    setSelectedImageIndex(0)
+
+  }, [currentCityIndex])
   if (isLoading) {
     return (
       <div className="flex h-screen w-full items-center justify-center bg-black">
@@ -255,9 +262,8 @@ export default function WorldExplorer() {
               >
                 <Button
                   variant={currentCityIndex === index ? "default" : "outline"}
-                  className={`relative h-14 w-32 overflow-hidden border-2 ${
-                    currentCityIndex === index ? "border-white" : "border-white/20"
-                  }`}
+                  className={`relative h-14 w-32 overflow-hidden border-2 ${currentCityIndex === index ? "border-white" : "border-white/20"
+                    }`}
                   onClick={() => !isTransitioning && handleCityChange(index)}
                   disabled={isTransitioning}
                 >
