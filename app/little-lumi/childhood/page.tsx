@@ -20,7 +20,6 @@ export default function ChildhoodPage() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [showGallery, setShowGallery] = useState(true)
   const [showTimeline, setShowTimeline] = useState(false)
-  const { matchedToys, matchToy, isGameCompleted } = useToyMatching(childhoodData)
   const { isMuted, toggleMute } = useAudio()
   const containerRef = useRef(null)
 
@@ -108,7 +107,7 @@ export default function ChildhoodPage() {
                 <CircularGallery
                   items={childhoodData.map((item) => ({
                     image: item.image,
-                    text: `Age ${item.age}`,
+                    text: `Little ${item.age}`,
                   }))}
                   bend={3}
                   textColor="#e9d5ff" // purple-200
@@ -129,7 +128,7 @@ export default function ChildhoodPage() {
                   whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(168, 85, 247, 0.5)" }}
                   whileTap={{ scale: 0.98 }}
                   data-cursor-hover
-               
+
                   data-cursor-color="#A855F7"
                   data-cursor-text="Start Game"
                   data-cusor-width="100"
@@ -148,20 +147,24 @@ export default function ChildhoodPage() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <TimelineToyGame
-                toys={childhoodData.map(item => ({
-                  id: item.toy.id,
-                  icon: item.toy.icon,
-                  name: item.toy.name,
-                  targetAge: item.toy.targetAge,
-                  image: item.image,
-                  funFact: item.funFact
-                }))}
-                onMatchToy={matchToy}
-                matchedToys={matchedToys}
-                isCompleted={isGameCompleted}
-                onComplete={handleComplete}
-              />
+              {
+                selectedPolaroid && (
+
+                  <TimelineToyGame
+                    toy={{
+                      id: selectedPolaroid.age,
+                      icon: selectedPolaroid.emoji,
+                      name: `Age ${selectedPolaroid.age}`,
+                      targetAge: selectedPolaroid.age,
+                      image: selectedPolaroid.image,
+                      funFact: selectedPolaroid.funFact
+                    }}
+
+
+                  />
+                )
+              }
+
             </motion.div>
           )}
         </AnimatePresence>
@@ -171,7 +174,7 @@ export default function ChildhoodPage() {
         {isModalOpen && selectedPolaroid && <PolaroidModal polaroid={selectedPolaroid} onClose={closeModal} />}
       </AnimatePresence>
 
-      <LittleLumiAudioController isMuted={isMuted} toggleMute={toggleMute} isGameCompleted={isGameCompleted} />
+      <LittleLumiAudioController isMuted={isMuted} toggleMute={toggleMute} isGameCompleted={false} />
 
       <div className="absolute bottom-4 right-4 text-purple-400 text-sm opacity-70">
         <p>Best experienced on desktop for full interactivity</p>

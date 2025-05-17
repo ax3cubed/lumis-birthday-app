@@ -1,15 +1,16 @@
 "use client"
 
+import { ChildhoodDataItem } from "@/data/little-lumis-data/childhood-data"
 import { useState, useEffect } from "react"
 
-export function useToyMatching(childData) {
+export function useToyMatching(childData:ChildhoodDataItem[]) {
   const [matchedToys, setMatchedToys] = useState<Record<string, boolean>>({})
   const [isGameCompleted, setIsGameCompleted] = useState(false)
 
   // Match a toy to an age
-  const matchToy = (toyId: string, age: number) => {
+  const matchToy = (toyId: number, age: number) => {
     // Find the toy data
-    const toyData = childData.find((item) => item.toy.id === toyId)
+    const toyData = childData.find((item) => item.age === toyId)
 
     if (!toyData) return false
 
@@ -28,7 +29,7 @@ export function useToyMatching(childData) {
 
   // Check if all toys are matched
   useEffect(() => {
-    const allToys = childData.map((item) => item.toy.id)
+    const allToys = childData.map((item) => item.age)
     const allMatched = allToys.every((toyId) => matchedToys[toyId])
 
     if (allMatched && allToys.length > 0) {
