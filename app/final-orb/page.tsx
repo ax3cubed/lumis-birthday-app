@@ -1,3 +1,4 @@
+"use client"
 import LoveLetterExperience from "@/components/final-orb-components/LoveLetterExperience"
 import dynamic from "next/dynamic"
 import { Suspense } from "react"
