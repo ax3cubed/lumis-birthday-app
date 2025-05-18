@@ -36,7 +36,7 @@ export default function ImageSidebar({ isOpen, onClose, mediaFiles, onImageClick
 
           {/* Sidebar */}
           <motion.div
-            className="fixed left-0 top-0 z-40 h-full w-64 bg-black/80 p-4 backdrop-blur-md"
+            className="fixed left-0 top-0 z-40 h-full w-64 bg-black/80 p-4 backdrop-blur-md fancy-scrollbar"
             initial={{ x: "-100%" }}
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
@@ -49,11 +49,11 @@ export default function ImageSidebar({ isOpen, onClose, mediaFiles, onImageClick
               </Button>
             </div>
 
-            <div className="mt-6 flex flex-col gap-4 overflow-y-auto pb-20 fancy-scrollbar">
+            <div className="mt-6 flex flex-col gap-4 overflow-y-scroll pb-20 ">
               {mediaFiles.map((media, index) => (
                 <motion.div
                   key={media.id}
-                  className="group cursor-pointer overflow-hidden overflow-y-scroll rounded-md"
+                  className="group cursor-pointer overflow-hidden rounded-md"
                   whileHover={{ scale: 1.03 }}
                   onClick={() => onImageClick(index)}
                   initial={{ opacity: 0, y: 20 }}
