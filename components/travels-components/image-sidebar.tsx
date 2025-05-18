@@ -65,14 +65,15 @@ export default function ImageSidebar({ isOpen, onClose, mediaFiles, onImageClick
                       <video
                         loop
                         autoPlay
+                        muted
                         src={media.src}
                         controls
                         className="h-full w-full object-cover"
-                        poster={"/placeholder.svg"}
+                        poster={"https://raw.githubusercontent.com/jemmy344/cdn-images/refs/heads/main/paris.jpg"}
                       />
                     ) : (
                       <img
-                        src={media.src || "/placeholder.svg"}
+                        src={media.src || "https://raw.githubusercontent.com/jemmy344/cdn-images/refs/heads/main/paris.jpg"}
                         alt={media.alt}
                         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                       />
