@@ -39,6 +39,8 @@ export default function MilestoneCarousel({ milestone }: MilestoneCarouselProps)
           <video
             className="w-full h-full object-cover"
             controls
+            autoPlay
+            loop
             style={{ transform: `translate(${objectPosX - 50}%, ${objectPosY - 50}%)` }}
           >
             <source src={item.src} type="video/mp4" />
