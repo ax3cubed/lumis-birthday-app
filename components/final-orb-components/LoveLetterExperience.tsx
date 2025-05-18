@@ -232,27 +232,7 @@ export default function LoveLetterExperience() {
                       transition={{ duration: 0.5 }}
                       className="mt-8 overflow-hidden"
                     >
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <motion.button
-                          className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white py-3 px-4 rounded-lg flex items-center justify-center font-letter"
-                          whileHover={{ scale: 1.03 }}
-                          whileTap={{ scale: 0.97 }}
-                          onClick={downloadLetter}
-                        >
-                          <Download size={18} className="mr-2" />
-                          Download Letter
-                        </motion.button>
-
-                        <motion.button
-                          className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white py-3 px-4 rounded-lg flex items-center justify-center font-letter"
-                          whileHover={{ scale: 1.03 }}
-                          whileTap={{ scale: 0.97 }}
-                          onClick={downloadWallpaper}
-                        >
-                          <Download size={18} className="mr-2" />
-                          Download Wallpaper
-                        </motion.button>
-                      </div>
+                      
 
                       <motion.div
                         initial={{ opacity: 0, y: 20 }}
