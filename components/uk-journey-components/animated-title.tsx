@@ -12,27 +12,33 @@ export default function AnimatedTitle({ title, subtitle }: AnimatedTitleProps) {
   const [titleComplete, setTitleComplete] = useState(false)
 
   return (
-    <div className="text-center">
-      <h1 className="font-serif text-4xl md:text-6xl font-bold mb-6 text-white">
-        <SplitText
-          text={title}
-          delay={50}
-          animationFrom={{ opacity: 0, transform: "translate3d(0,30px,0)" }}
-          className="text-white"
-          onLetterAnimationComplete={() => setTitleComplete(true)}
-        />
-      </h1>
-
-      {/* Only start animating the subtitle after the title animation is complete */}
-      <div className="max-w-2xl mx-auto text-lg">
-        <SplitText
-          text={subtitle}
-          delay={20}
-          animationFrom={{ opacity: 0, transform: "translate3d(0,20px,0)" }}
-          className="text-white"
-          threshold={0}
-        />
-      </div>
-    </div>
+   <div className="text-center">
+ 
+  <h1 className="font-serif text-4xl md:text-6xl font-bold mb-6 text-white">
+    <SplitText
+      text={title}
+      delay={20}
+      animationFrom={{ opacity: 0, y: 20 }}
+      className="text-white"
+      threshold={0.1}
+      rootMargin="0px"
+      onLetterAnimationComplete={() => {
+        console.log("Title animation complete");
+        setTitleComplete(true);
+      }}
+    />
+  </h1>
+  <div className="max-w-2xl mx-auto text-lg">
+    <SplitText
+      text={subtitle}
+      delay={20}
+      animationFrom={{ opacity: 0, y: 20 }}
+      className="text-white"
+      threshold={0.1}
+      rootMargin="0px"
+      onLetterAnimationComplete={() => console.log("Subtitle animation complete")}
+    />
+  </div>
+</div>
   )
 }
