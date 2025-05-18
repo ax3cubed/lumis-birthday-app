@@ -34,8 +34,8 @@ const cities: City[] = [
       {
         id: "paris-1",
         src: getCDNUrl("paris/paris1.mp4"),
-        alt: "Eiffel Tower",
-        caption: "The iconic Eiffel Tower",
+        alt: "Disney Park",
+        caption: "Disney park",
         mediaType: "video",
       },
       {

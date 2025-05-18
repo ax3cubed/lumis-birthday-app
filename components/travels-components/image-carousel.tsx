@@ -112,25 +112,37 @@ export default function ImageCarousel({ isOpen, onClose, images, initialIndex }:
               >
                 <div className="relative max-h-full max-w-full">
                   {images[currentIndex].mediaType === "video" ? (
-                    <video
-                      src={images[currentIndex].src}
-                      controls
-                      className="max-h-[80vh] max-w-full rounded-lg object-contain"
-                      poster={"/placeholder.svg"}
-                    />
+                    <>
+                      <div className="absolute top-0 left-0 right-0 bg-black/50 p-4 text-center text-white backdrop-blur-sm">
+                        <p className="text-lg font-medium">{images[currentIndex].caption}</p>
+                        <p className="text-sm text-white/70">
+                          {currentIndex + 1} / {images.length}
+                        </p>
+                      </div>
+                      <video
+                        src={images[currentIndex].src}
+                        controls
+                        className="max-h-[80vh] max-w-full rounded-lg object-contain"
+                        poster={"/placeholder.svg"}
+                      />
+
+                    </>
                   ) : (
-                    <img
-                      src={images[currentIndex].src || "/placeholder.svg"}
-                      alt={images[currentIndex].alt}
-                      className="max-h-[80vh] max-w-full rounded-lg object-contain"
-                    />
+                    <>
+                      <img
+                        src={images[currentIndex].src || "/placeholder.svg"}
+                        alt={images[currentIndex].alt}
+                        className="max-h-[80vh] max-w-full rounded-lg object-contain"
+                      />
+                      <div className="absolute bottom-0 left-0 right-0 bg-black/50 p-4 text-center text-white backdrop-blur-sm">
+                        <p className="text-lg font-medium">{images[currentIndex].caption}</p>
+                        <p className="text-sm text-white/70">
+                          {currentIndex + 1} / {images.length}
+                        </p>
+                      </div>
+                    </>
                   )}
-                  <div className="absolute bottom-0 left-0 right-0 bg-black/50 p-4 text-center text-white backdrop-blur-sm">
-                    <p className="text-lg font-medium">{images[currentIndex].caption}</p>
-                    <p className="text-sm text-white/70">
-                      {currentIndex + 1} / {images.length}
-                    </p>
-                  </div>
+
                 </div>
               </motion.div>
             </AnimatePresence>
