@@ -10,6 +10,7 @@ import ImageSidebar from "@/components/travels-components/image-sidebar"
 import ImageCarousel from "@/components/travels-components/image-carousel"
 import { useRouter } from "next/navigation"
 import { getCDNUrl } from "@/lib/utils"
+import { get } from "http"
 
 // Define city data
 type City = {
@@ -131,35 +132,35 @@ const cities: City[] = [
     gallery: [
       {
         id: "amsterdam-1",
-        src: "https://images.unsplash.com/photo-1534351590666-13e3e96b5017",
+        src: getCDNUrl("amst/ams1.jpg"),
         alt: "Amsterdam Canals",
         caption: "Amsterdam's beautiful canals",
         mediaType: "image",
       },
       {
         id: "amsterdam-2",
-        src: "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4",
+        src: getCDNUrl("amst/ams2.jpg"),
         alt: "Bicycles of Amsterdam",
         caption: "Bicycles of Amsterdam",
         mediaType: "image",
       },
       {
         id: "amsterdam-3",
-        src: "https://images.unsplash.com/photo-1576924542622-772281b13aa8",
+        src: getCDNUrl("amst/ams3.jpg"),
         alt: "Amsterdam Houses",
         caption: "Traditional Amsterdam houses",
         mediaType: "image",
       },
       {
         id: "amsterdam-4",
-        src: "https://images.unsplash.com/photo-1612521605237-0043a7d3307f",
+        src: getCDNUrl("amst/ams4.jpg"),
         alt: "Rijksmuseum",
         caption: "The Rijksmuseum",
         mediaType: "image",
       },
       {
         id: "amsterdam-5",
-        src: "https://images.unsplash.com/photo-1559703248-dcaaec9fab78",
+        src: getCDNUrl("amst/ams5.jpg"),  
         alt: "Amsterdam at Night",
         caption: "Amsterdam at night",
         mediaType: "image",
@@ -180,14 +181,14 @@ const cities: City[] = [
       },
       {
         id: "belgium-2",
-        src: "https://images.unsplash.com/photo-1559682117-3a8884aacba3",
+        src: "https://raw.githubusercontent.com/jemmy344/cdn-images/refs/heads/main/belgium.jpg",
         alt: "Bruges Canals",
         caption: "The canals of Bruges",
         mediaType: "image",
       },
       {
         id: "belgium-3",
-        src: "https://images.unsplash.com/photo-1569110462378-8e0df7fb6bb5",
+        src: "https://images.unsplash.com/photo-1561572020-1f8b2c3d4e5a",
         alt: "Atomium",
         caption: "The Atomium in Brussels",
         mediaType: "image",
