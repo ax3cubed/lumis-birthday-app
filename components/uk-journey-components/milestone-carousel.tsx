@@ -30,7 +30,7 @@ export default function MilestoneCarousel({ milestone }: MilestoneCarouselProps)
                 fill
                 className="object-cover"
                 priority
-                style={{ objectPosition: `${objectPosX}% ${objectPosY}%` }}
+                style={{ objectPosition: `${String(objectPosX)}% ${String(objectPosY)}%` }}
               />
             </div>
           </div>
@@ -41,7 +41,7 @@ export default function MilestoneCarousel({ milestone }: MilestoneCarouselProps)
             controls
             autoPlay
             loop
-            style={{ transform: `translate(${objectPosX - 50}%, ${objectPosY - 50}%)` }}
+            style={{ transform: `translate(${String(objectPosX - 50)}%, ${String(objectPosY - 50)}%)` }}
           >
             <source src={item.src} type="video/mp4" />
             Your browser does not support the video tag.
