@@ -1,7 +1,9 @@
 "use client"
 
-import { useSprings, animated } from "@react-spring/web"
+import { useSprings, animated, easings } from "@react-spring/web"
 import { useEffect, useRef, useState } from "react"
+
+type TextAlign = "left" | "center" | "right" | "justify"
 
 interface SplitTextProps {
   text?: string
@@ -12,7 +14,7 @@ interface SplitTextProps {
   easing?: string
   threshold?: number
   rootMargin?: string
-  textAlign?: string
+  textAlign?: TextAlign
   onLetterAnimationComplete?: () => void
 }
 
@@ -56,7 +58,7 @@ const SplitText = ({
 
   const springs = useSprings(
     letters.length,
-    letters.map((_, i) => ({
+    (i) => ({
       from: animationFrom,
       to: inView
         ? async (next: any) => {
@@ -68,8 +70,13 @@ const SplitText = ({
           }
         : animationFrom,
       delay: i * delay,
-      config: { easing },
-    })),
+      config: { 
+        easing: (t: number) => 
+          typeof easings[easing as keyof typeof easings] === 'function' 
+            ? (easings[easing as keyof typeof easings] as (t: number) => number)(t)
+            : easings.easeOutCubic(t)
+      },
+    }),
   )
 
   return (
@@ -86,7 +93,7 @@ const SplitText = ({
             return (
               <animated.span
                 key={index}
-                style={springs[index]}
+                style={springs[index] as any}
                 className="inline-block transform transition-opacity will-change-transform"
               >
                 {letter}
