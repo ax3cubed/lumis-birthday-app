@@ -11,7 +11,20 @@ import ImageCarousel from "@/components/travels-components/image-carousel"
 import { useRouter } from "next/navigation"
 
 // Define city data
-const cities = [
+type City = {
+  id: string
+  name: string
+  image: string
+  gallery:  GalleryImage[]
+}
+type GalleryImage = {
+  id: string
+  src: string
+  alt: string
+  caption: string
+  mediaType: "image" | "video"
+}
+const cities:City[] = [
   {
     id: "paris",
     name: "PARIS",
@@ -22,30 +35,35 @@ const cities = [
         src: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34",
         alt: "Eiffel Tower",
         caption: "The iconic Eiffel Tower",
+        mediaType: "image",
       },
       {
         id: "paris-2",
         src: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a",
         alt: "Arc de Triomphe",
         caption: "Arc de Triomphe",
+        mediaType: "image",
       },
       {
         id: "paris-3",
         src: "https://images.unsplash.com/photo-1478391679764-b2d8b3cd1e94",
         alt: "Notre-Dame Cathedral",
         caption: "Notre-Dame Cathedral",
+        mediaType: "image",
       },
       {
         id: "paris-4",
         src: "https://images.unsplash.com/photo-1520939817895-060bdaf4fe1b",
         alt: "Louvre Museum",
         caption: "The Louvre Museum",
+        mediaType: "image",
       },
       {
         id: "paris-5",
         src: "https://images.unsplash.com/photo-1550340499-a6c60fc8287c",
         alt: "Seine River",
         caption: "Seine River",
+        mediaType: "image",
       },
     ],
   },
@@ -59,30 +77,35 @@ const cities = [
         src: "https://images.unsplash.com/photo-1534351590666-13e3e96b5017",
         alt: "Amsterdam Canals",
         caption: "Amsterdam's beautiful canals",
+        mediaType: "image",
       },
       {
         id: "amsterdam-2",
         src: "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4",
         alt: "Bicycles of Amsterdam",
         caption: "Bicycles of Amsterdam",
+        mediaType: "image",
       },
       {
         id: "amsterdam-3",
         src: "https://images.unsplash.com/photo-1576924542622-772281b13aa8",
         alt: "Amsterdam Houses",
         caption: "Traditional Amsterdam houses",
+        mediaType: "image",
       },
       {
         id: "amsterdam-4",
         src: "https://images.unsplash.com/photo-1612521605237-0043a7d3307f",
         alt: "Rijksmuseum",
         caption: "The Rijksmuseum",
+        mediaType: "image",
       },
       {
         id: "amsterdam-5",
         src: "https://images.unsplash.com/photo-1559703248-dcaaec9fab78",
         alt: "Amsterdam at Night",
         caption: "Amsterdam at night",
+        mediaType: "image",
       },
     ],
   },
@@ -96,30 +119,35 @@ const cities = [
         src: "https://images.unsplash.com/photo-1491557345352-5929e343eb89",
         alt: "Grand Place Brussels",
         caption: "Grand Place, Brussels",
+        mediaType: "image",
       },
       {
         id: "belgium-2",
         src: "https://images.unsplash.com/photo-1559682117-3a8884aacba3",
         alt: "Bruges Canals",
         caption: "The canals of Bruges",
+        mediaType: "image",
       },
       {
         id: "belgium-3",
         src: "https://images.unsplash.com/photo-1569110462378-8e0df7fb6bb5",
         alt: "Atomium",
         caption: "The Atomium in Brussels",
+        mediaType: "image",
       },
       {
         id: "belgium-4",
         src: "https://images.unsplash.com/photo-1587789202069-f57c846b85db",
         alt: "Ghent",
         caption: "Historic city of Ghent",
+        mediaType: "image",
       },
       {
         id: "belgium-5",
         src: "https://images.unsplash.com/photo-1583552184141-d2a3fe2a0f91",
         alt: "Belgian Chocolate",
         caption: "Famous Belgian chocolate",
+        mediaType: "image",
       },
     ],
   },
@@ -234,7 +262,7 @@ export default function WorldExplorer() {
       <ImageSidebar
         isOpen={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}
-        images={currentCity.gallery}
+        mediaFiles={currentCity.gallery}
         onImageClick={handleImageClick}
         cityName={currentCity.name}
       />

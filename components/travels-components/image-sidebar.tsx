@@ -4,9 +4,10 @@ import { motion, AnimatePresence } from "framer-motion"
 import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-interface Image {
+interface Media {
   id: string
-  src: string
+  mediaType: "image" | "video"
+  src: string // Can be image or video
   alt: string
   caption: string
 }
@@ -14,12 +15,12 @@ interface Image {
 interface ImageSidebarProps {
   isOpen: boolean
   onClose: () => void
-  images: Image[]
+  mediaFiles: Media[]
   onImageClick: (index: number) => void
   cityName: string
 }
 
-export default function ImageSidebar({ isOpen, onClose, images, onImageClick, cityName }: ImageSidebarProps) {
+export default function ImageSidebar({ isOpen, onClose, mediaFiles, onImageClick, cityName }: ImageSidebarProps) {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -49,9 +50,9 @@ export default function ImageSidebar({ isOpen, onClose, images, onImageClick, ci
             </div>
 
             <div className="mt-6 flex flex-col gap-4 overflow-y-auto pb-20">
-              {images.map((image, index) => (
+              {mediaFiles.map((media, index) => (
                 <motion.div
-                  key={image.id}
+                  key={media.id}
                   className="group cursor-pointer overflow-hidden rounded-md"
                   whileHover={{ scale: 1.03 }}
                   onClick={() => onImageClick(index)}
@@ -60,14 +61,23 @@ export default function ImageSidebar({ isOpen, onClose, images, onImageClick, ci
                   transition={{ delay: index * 0.1 }}
                 >
                   <div className="relative aspect-video w-full overflow-hidden rounded-md">
-                    <img
-                      src={image.src || "/placeholder.svg"}
-                      alt={image.alt}
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    />
+                    {media.mediaType === "video" ? (
+                      <video
+                        src={media.src}
+                        controls
+                        className="h-full w-full object-cover"
+                        poster={"/placeholder.svg"}
+                      />
+                    ) : (
+                      <img
+                        src={media.src || "/placeholder.svg"}
+                        alt={media.alt}
+                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                     <p className="absolute bottom-2 left-2 right-2 text-sm font-medium text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                      {image.caption}
+                      {media.caption}
                     </p>
                   </div>
                 </motion.div>

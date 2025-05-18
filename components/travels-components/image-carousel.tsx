@@ -5,8 +5,9 @@ import { motion, AnimatePresence } from "framer-motion"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-interface Image {
+interface Media {
   id: string
+  mediaType: "image" | "video"
   src: string
   alt: string
   caption: string
@@ -15,7 +16,7 @@ interface Image {
 interface ImageCarouselProps {
   isOpen: boolean
   onClose: () => void
-  images: Image[]
+  images: Media[]
   initialIndex: number
 }
 
@@ -98,7 +99,7 @@ export default function ImageCarousel({ isOpen, onClose, images, initialIndex }:
             <ChevronRight className="h-8 w-8" />
           </Button>
 
-          {/* Image container */}
+          {/* Media container */}
           <div className="relative h-full w-full">
             <AnimatePresence mode="wait">
               <motion.div
@@ -110,11 +111,20 @@ export default function ImageCarousel({ isOpen, onClose, images, initialIndex }:
                 transition={{ duration: 0.3 }}
               >
                 <div className="relative max-h-full max-w-full">
-                  <img
-                    src={images[currentIndex].src || "/placeholder.svg"}
-                    alt={images[currentIndex].alt}
-                    className="max-h-[80vh] max-w-full rounded-lg object-contain"
-                  />
+                  {images[currentIndex].mediaType === "video" ? (
+                    <video
+                      src={images[currentIndex].src}
+                      controls
+                      className="max-h-[80vh] max-w-full rounded-lg object-contain"
+                      poster={"/placeholder.svg"}
+                    />
+                  ) : (
+                    <img
+                      src={images[currentIndex].src || "/placeholder.svg"}
+                      alt={images[currentIndex].alt}
+                      className="max-h-[80vh] max-w-full rounded-lg object-contain"
+                    />
+                  )}
                   <div className="absolute bottom-0 left-0 right-0 bg-black/50 p-4 text-center text-white backdrop-blur-sm">
                     <p className="text-lg font-medium">{images[currentIndex].caption}</p>
                     <p className="text-sm text-white/70">
