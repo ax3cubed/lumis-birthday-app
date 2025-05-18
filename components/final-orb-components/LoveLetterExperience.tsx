@@ -9,12 +9,12 @@ import { getCDNUrl } from "@/lib/utils"
 // Letter content
 const letterContent = [
   "Dear Lumi,",
-  "Today's not just your birthday — it's a celebration of all the moments that made you who you are. The small, quiet wins. The storms you stood through. The joy and kindness you brought into every room — even when you had none left for yourself.",
+  "Today's not just your birthday it's a celebration of all the moments that made you who you are. The small, quiet wins. The storms you stood through. The joy and kindness you brought into every room even when you had none left for yourself.",
   "Watching you grow, cheer others on, and light up your world is one of the greatest privileges of being your friend.",
-  "This space — this entire project — is a letter in the truest sense: full of care, detail, and the deepest admiration. I hope it reminds you how incredibly known, appreciated, and loved you are.",
+  "This space this entire project is a letter in the truest sense: full of care, detail, and the deepest admiration. I hope it reminds you how incredibly known, appreciated, and loved you are.",
   "Happy Birthday, Lumi. You are one of one.",
   "With all my heart,",
-  "Your best friend/SISTER",
+  "Your best friend/sister",
 ]
 
 // Media content - supports both images and videos
