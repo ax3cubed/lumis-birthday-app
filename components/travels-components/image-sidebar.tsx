@@ -49,7 +49,7 @@ export default function ImageSidebar({ isOpen, onClose, mediaFiles, onImageClick
               </Button>
             </div>
 
-            <div className="mt-6 flex flex-col gap-4 overflow-y-auto pb-20">
+            <div className="mt-6 flex flex-col gap-4 overflow-y-scroll pb-20">
               {mediaFiles.map((media, index) => (
                 <motion.div
                   key={media.id}
