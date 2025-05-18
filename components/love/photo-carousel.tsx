@@ -6,43 +6,97 @@ import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import { getCDNUrl } from "@/lib/utils"
 
 // Sample data - replace with actual content
-const photos = [
+type Media = {
+  id: number
+  src: string
+  caption: string
+  accentColor: string
+  accentItem: string
+  mediaType: "image" | "video"
+}
+const photos:Media[] = [
   {
     id: 1,
-    src: "/placeholder-osyrs.png",
+    src: getCDNUrl("relationship/love-1.jpg"),
     caption: "Our first picnic",
     accentColor: "red",
     accentItem: "rose",
+    mediaType: "image",
   },
   {
     id: 2,
-    src: "/placeholder-qxw1u.png",
+    src: getCDNUrl("relationship/love-2.mp4"),
     caption: "The time he forgot the umbrella ☔",
     accentColor: "blue",
     accentItem: "umbrella",
+    mediaType: "video",
   },
   {
     id: 3,
-    src: "/placeholder-leev3.png",
+    src: getCDNUrl("relationship/love-3.jpg"),
     caption: "Dancing under the stars",
     accentColor: "gold",
     accentItem: "necklace",
+    mediaType: "image",
   },
   {
     id: 4,
-    src: "/placeholder-jyhzr.png",
+    src: getCDNUrl("relationship/love-4.jpg"),
     caption: "Sunday morning pancakes",
     accentColor: "yellow",
     accentItem: "lemon",
+    mediaType: "image",
   },
   {
     id: 5,
-    src: "/placeholder-5a1tc.png",
+    src: getCDNUrl("relationship/love-5.jpg"),    
     caption: "Our favorite beach getaway",
     accentColor: "turquoise",
     accentItem: "ocean",
+    mediaType: "image",
+  },
+  {
+    id: 6,
+    src: getCDNUrl("relationship/love-6.jpg"),
+    caption: "Celebrating our anniversary",
+    accentColor: "pink",
+    accentItem: "cake",
+    mediaType: "image",
+  },
+  {
+    id: 7,
+    src: getCDNUrl("relationship/love-7.jpg"),
+    caption: "Movie nights with popcorn 🍿",
+    accentColor: "purple",
+    accentItem: "popcorn",
+    mediaType: "image",
+  },
+  {
+    id: 8,
+    src: getCDNUrl("relationship/love-8.jpg"),
+    caption: "Exploring new places together",
+    accentColor: "green",
+    accentItem: "leaf",
+    mediaType: "image",
+  },
+  {
+    id: 9,
+    src: getCDNUrl("relationship/love-9.jpg"),
+    caption: "Cuddles on a rainy day",
+    accentColor: "gray",
+    accentItem: "blanket",
+    mediaType: "image",
+  },
+  {
+    id: 10,
+    src: getCDNUrl("relationship/love-10.jpg"),
+    caption: "Our first dance as a couple",
+    accentColor: "orange",
+    accentItem: "flower",
+    mediaType: "image",
   },
 ]
 
