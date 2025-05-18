@@ -119,6 +119,8 @@ export default function MediaCarousel() {
   const [isVideoReady, setIsVideoReady] = useState(false)
   const [positionX, setPositionX] = useState(0)
   const [positionY, setPositionY] = useState(0)
+  const [objectPosX, setObjectPosX] = useState(50) // percent
+  const [objectPosY, setObjectPosY] = useState(50) // percent
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
   const currentMedia = media[currentIndex]
@@ -250,172 +252,174 @@ export default function MediaCarousel() {
   }
 
   return (
-    <div className="relative overflow-hidden rounded-lg shadow-2xl">
-      <div
-        className="relative h-[500px] md:h-[600px] w-full"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentIndex}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="absolute inset-0"
-          >
-            <div className="relative h-full w-full">
-              {isVideo ? (
-                <div className="relative h-full w-full bg-black">
-                  {!isVideoReady && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
-                    </div>
-                  )}
-                  <video
-                    ref={videoRef}
-                    src={currentMedia.src}
-                    className={`object-contain h-full w-full ${isVideoReady ? 'opacity-100' : 'opacity-0'}`}
-                    autoPlay
-                    loop
-                    playsInline
-                    onLoadedData={handleVideoLoaded}
-                    onEnded={() => {
-                      // For short videos, advance when they end if not paused
-                      if (!isPaused && videoRef.current && videoRef.current.duration <= 15) {
-                        handleNext()
-                      }
-                    }}
-                    style={{ transform: `translate(${positionX}px, ${positionY}px)` }}
-                  />
-                </div>
-              ) : (
-                <Image
-                  src={currentMedia.src || "/placeholder.svg"}
-                  alt={currentMedia.caption}
-                  fill
-                  className="object-cover"
-                  priority
-                  style={{ transform: `translate(${positionX}px, ${positionY}px)` }}
-                />
-              )}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70"></div>
-            </div>
-
+    <>
+      <div className="relative overflow-hidden rounded-lg shadow-2xl">
+        <div
+          className="relative h-[500px] md:h-[600px] w-full"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <AnimatePresence mode="wait">
             <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              className="absolute bottom-0 left-0 right-0 p-6 md:p-8"
+              key={currentIndex}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="absolute inset-0"
             >
-              <p className="text-xl md:text-2xl font-serif text-white mb-2">{currentMedia.caption}</p>
+              <div className="relative h-full w-full">
+                {isVideo ? (
+                  <div className="relative h-full w-full bg-black">
+                    {!isVideoReady && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+                      </div>
+                    )}
+                    <video
+                      ref={videoRef}
+                      src={currentMedia.src}
+                      className={`object-contain h-full w-full ${isVideoReady ? 'opacity-100' : 'opacity-0'}`}
+                      autoPlay
+                      loop
+                      playsInline
+                      onLoadedData={handleVideoLoaded}
+                      onEnded={() => {
+                        // For short videos, advance when they end if not paused
+                        if (!isPaused && videoRef.current && videoRef.current.duration <= 15) {
+                          handleNext()
+                        }
+                      }}
+                      style={{ transform: `translate(${positionX}px, ${positionY}px)` }}
+                    />
+                  </div>
+                ) : (
+                  <Image
+                    src={currentMedia.src || "/placeholder.svg"}
+                    alt={currentMedia.caption}
+                    fill
+                    className="object-cover"
+                    priority
+                    style={{ objectPosition: `${objectPosX}% ${objectPosY}%` }}
+                  />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70"></div>
+              </div>
+
               <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: "100px" }}
-                transition={{ delay: 0.6, duration: 0.8 }}
-                className="h-0.5 bg-white"
-              ></motion.div>
-              <p className="text-sm text-gray-300 mt-2 italic">
-                <span className={getTextColorClass(currentMedia.accentColor)}>
-                  {currentMedia.accentItem}
-                </span>{" "}
-                - the only color in our black & white world
-              </p>
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+                className="absolute bottom-0 left-0 right-0 p-6 md:p-8"
+              >
+                <p className="text-xl md:text-2xl font-serif text-white mb-2">{currentMedia.caption}</p>
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: "100px" }}
+                  transition={{ delay: 0.6, duration: 0.8 }}
+                  className="h-0.5 bg-white"
+                ></motion.div>
+                <p className="text-sm text-gray-300 mt-2 italic">
+                  <span className={getTextColorClass(currentMedia.accentColor)}>
+                    {currentMedia.accentItem}
+                  </span>{" "}
+                  - the only color in our black & white world
+                </p>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        </AnimatePresence>
-      </div>
-
-      {/* Navigation controls */}
-      <button
-        onClick={handlePrev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full transition-all"
-        aria-label="Previous media"
-      >
-        <ChevronLeft size={24} />
-      </button>
-
-      <button
-        onClick={handleNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full transition-all"
-        aria-label="Next media"
-      >
-        <ChevronRight size={24} />
-      </button>
-
-      {/* Dots navigation */}
-      <div className="absolute bottom-24 md:bottom-20 left-1/2 -translate-x-1/2 flex gap-1.5">
-        {media.map((item, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`w-2 h-2 rounded-full transition-all ${
-              index === currentIndex ? "bg-white scale-125" : "bg-white/50"
-            } ${item.mediaType === "video" ? "ring-1 ring-white/60" : ""}`}
-            aria-label={`Go to slide ${index + 1}`}
-            title={item.mediaType === "video" ? "Video" : "Image"}
-          />
-        ))}
-      </div>
-
-      {/* Video controls */}
-      {isVideo && (
-        <div className="absolute bottom-4 left-4 flex gap-2">
-          <button
-            onClick={togglePause}
-            className="bg-black/40 hover:bg-black/60 text-white p-2 rounded-full transition-all"
-            aria-label={isPaused ? "Play" : "Pause"}
-          >
-            {isPaused ? <Play size={20} /> : <Pause size={20} />}
-          </button>
-          <button
-            onClick={toggleMute}
-            className="bg-black/40 hover:bg-black/60 text-white p-2 rounded-full transition-all"
-            aria-label={isMuted ? "Unmute" : "Mute"}
-          >
-            {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
-          </button>
+          </AnimatePresence>
         </div>
-      )}
 
-      {/* Auto-advance toggle */}
-      <button
-        onClick={togglePause}
-        className="absolute bottom-4 right-4 bg-black/40 hover:bg-black/60 text-white px-3 py-1 rounded-full text-sm transition-all flex items-center gap-1"
-      >
-        {isPaused ? <Play size={14} /> : <Pause size={14} />}
-        <span>{isPaused ? "Auto-play" : "Pause"}</span>
-      </button>
+        {/* Navigation controls */}
+        <button
+          onClick={handlePrev}
+          className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full transition-all"
+          aria-label="Previous media"
+        >
+          <ChevronLeft size={24} />
+        </button>
 
-      {/* Position sliders */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 bg-black/40 rounded-lg px-4 py-2">
+        <button
+          onClick={handleNext}
+          className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full transition-all"
+          aria-label="Next media"
+        >
+          <ChevronRight size={24} />
+        </button>
+
+        {/* Dots navigation */}
+        <div className="absolute bottom-24 md:bottom-20 left-1/2 -translate-x-1/2 flex gap-1.5">
+          {media.map((item, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              className={`w-2 h-2 rounded-full transition-all ${
+                index === currentIndex ? "bg-white scale-125" : "bg-white/50"
+              } ${item.mediaType === "video" ? "ring-1 ring-white/60" : ""}`}
+              aria-label={`Go to slide ${index + 1}`}
+              title={item.mediaType === "video" ? "Video" : "Image"}
+            />
+          ))}
+        </div>
+
+        {/* Video controls */}
+        {isVideo && (
+          <div className="absolute bottom-4 left-4 flex gap-2">
+            <button
+              onClick={togglePause}
+              className="bg-black/40 hover:bg-black/60 text-white p-2 rounded-full transition-all"
+              aria-label={isPaused ? "Play" : "Pause"}
+            >
+              {isPaused ? <Play size={20} /> : <Pause size={20} />}
+            </button>
+            <button
+              onClick={toggleMute}
+              className="bg-black/40 hover:bg-black/60 text-white p-2 rounded-full transition-all"
+              aria-label={isMuted ? "Unmute" : "Mute"}
+            >
+              {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+            </button>
+          </div>
+        )}
+
+        {/* Auto-advance toggle */}
+        <button
+          onClick={togglePause}
+          className="absolute bottom-4 right-4 bg-black/40 hover:bg-black/60 text-white px-3 py-1 rounded-full text-sm transition-all flex items-center gap-1"
+        >
+          {isPaused ? <Play size={14} /> : <Pause size={14} />}
+          <span>{isPaused ? "Auto-play" : "Pause"}</span>
+        </button>
+      </div>
+
+      {/* Position sliders OUTSIDE the carousel */}
+      <div className="mt-4 flex flex-col items-center gap-2 bg-black/40 rounded-lg px-4 py-2 w-fit mx-auto">
         <label className="flex items-center gap-2 text-white text-xs">
           X:
           <input
             type="range"
-            min={-200}
-            max={200}
-            value={positionX}
-            onChange={e => setPositionX(Number(e.target.value))}
+            min={0}
+            max={100}
+            value={objectPosX}
+            onChange={e => setObjectPosX(Number(e.target.value))}
             className="w-32"
           />
-          <span>{positionX}px</span>
+          <span>{objectPosX}%</span>
         </label>
         <label className="flex items-center gap-2 text-white text-xs">
           Y:
           <input
             type="range"
-            min={-200}
-            max={200}
-            value={positionY}
-            onChange={e => setPositionY(Number(e.target.value))}
+            min={0}
+            max={100}
+            value={objectPosY}
+            onChange={e => setObjectPosY(Number(e.target.value))}
             className="w-32"
           />
-          <span>{positionY}px</span>
+          <span>{objectPosY}%</span>
         </label>
       </div>
-    </div>
+    </>
   )
 }
