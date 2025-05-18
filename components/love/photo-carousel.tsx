@@ -269,7 +269,6 @@ export default function MediaCarousel() {
                     src={currentMedia.src}
                     className={`object-contain h-full w-full ${isVideoReady ? 'opacity-100' : 'opacity-0'}`}
                     autoPlay
-                    muted
                     loop
                     playsInline
                     onLoadedData={handleVideoLoaded}
