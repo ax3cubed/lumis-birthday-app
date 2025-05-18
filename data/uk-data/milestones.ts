@@ -1,3 +1,4 @@
+import { getCDNUrl } from "@/lib/utils"
 import type { Milestone } from "@/types/milestone"
 
 
@@ -39,7 +40,7 @@ export const milestones: Milestone[] = [
       {
         alt: "First view of London skyline",
         src: "https://github.com/jemmy344/cdn-images/blob/7ac17ce1ff9ec1e9158bcfd69af8918f562664ba/lumi-journey/first-arrival/flying-in-4.jpg",
-        mediaType: "video",
+        mediaType: "image",
         width: "600",
         height: "400",
       },
@@ -149,8 +150,8 @@ export const milestones: Milestone[] = [
       y: 220,
     },
     description:
-      "Couldn't go home for Christmas, so I experienced a British Christmas with my friend's family. Boxing Day was a completely new concept to me!",
-    quote: "Their family traditions were so different from mine, but they made me feel like I belonged.",
+      "Couldn't go home for Christmas, so I experienced a small Christmas with my friend's. Plus we had to work at our various part-tim gigs during the holidays.",
+    quote: "Felt different from the previous year, but i enjoyed it.",
     weatherEffect: "snow",
     tags: ["Christmas", "Traditions", "Family"],
     mediaList: [
@@ -193,15 +194,15 @@ export const milestones: Milestone[] = [
       y: 250,
     },
     description:
-      "Took a day trip to Peterborough to visit the cathedral. Got caught in typical British drizzle without an umbrella.",
+      "Took a day trip to Peterborough to visit family.",
     quote:
-      "The cathedral was magnificent, but I learned my lesson about always carrying an umbrella in England, regardless of the forecast.",
+      "The cathedral was magnificent, and i had a lovly time.",
     tags: ["Travel", "Cathedral", "Day Trip"],
     mediaList: [
       {
         alt: "Peterborough Cathedral exterior",
-        src: "/media/peterborough-cathedral.jpg",
-        mediaType: "image",
+        src: getCDNUrl("lumi-journey/peterborough/peter.mp4"),
+        mediaType: "video",
         width: "600",
         height: "400",
       },
@@ -222,8 +223,8 @@ export const milestones: Milestone[] = [
     mediaList: [
       {
         alt: "Student studying late at library",
-        src: "/media/late-night-studies.jpg",
-        mediaType: "image",
+        src: "https://github.com/jemmy344/cdn-images/raw/refs/heads/main/lumi-journey/late-night-study/lns1.mp4",
+        mediaType: "video",
         width: "600",
         height: "400",
       },
@@ -238,14 +239,14 @@ export const milestones: Milestone[] = [
       y: 350,
     },
     description:
-      "Finally found my own little studio apartment. It was tiny but it was mine. The landlord was surprisingly nice and helped me set up everything.",
+      "Finally found the three bedroom apartment we all stayed at. Made so many memories there, from movie nights to cooking experiments. Lots of laughs.",
     quote: "The moment I got my keys, I danced around my empty apartment like a fool. Freedom!",
     tags: ["Housing", "Independence", "Milestone"],
     mediaList: [
       {
         alt: "Small studio apartment interior",
-        src: "/media/first-apartment.jpg",
-        mediaType: "image",
+        src: getCDNUrl("lumi-journey/first-apartment/first-apartment1.mp4"),
+        mediaType: "video",
         width: "600",
         height: "400",
       },
@@ -253,21 +254,35 @@ export const milestones: Milestone[] = [
   },
   {
     id: 9,
-    title: "London Hangout",
-    date: "April 2022",
+    title: "Fourth Birthday",
+    date: "May 2024",
     position: {
       x: 250,
       y: 400,
     },
     description:
-      "Weekend trip to London with university friends. We did all the touristy things - Big Ben, London Eye, Buckingham Palace, and got lost on the Tube multiple times.",
-    quote: "We walked so much that my feet were absolutely killing me, but I wouldn't have missed it for the world.",
+      "Celebrated my birthday in London with friends.",
+    quote: "Fun",
     tags: ["London", "Tourism", "Friends"],
     mediaList: [
       {
         alt: "London Eye and Big Ben",
-        src: "/media/london-hangout.jpg",
-        mediaType: "image",
+        src: getCDNUrl("lumi-journey/fouth-birthday/3rdbd1.mp4"),
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "London Eye and Big Ben",
+        src: getCDNUrl("lumi-journey/fouth-birthday/4thbd.mp4"),
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "London Eye and Big Ben",
+        src: getCDNUrl("lumi-journey/fouth-birthday/4thbd3.mp4"),
+        mediaType: "video",
         width: "600",
         height: "400",
       },
@@ -276,20 +291,20 @@ export const milestones: Milestone[] = [
   {
     id: 10,
     title: "Greggs",
-    date: "May 2022",
+    date: "2021 2025",
     position: {
       x: 350,
       y: 450,
     },
     description:
-      "My British classmate insisted I try something called a 'sausage roll' from Greggs. Now it's my guilty pleasure every Friday morning.",
+      "o2 free greggs 'hot-choco 'sausage roll' from Greggs. Now it's my guilty pleasure every Friday morning.",
     quote: "I don't understand why everyone makes such a big deal about... oh. OH. Now I get it.",
     tags: ["Food", "British Culture", "Discovery"],
     mediaList: [
       {
         alt: "Greggs sausage roll",
-        src: "/media/greggs-sausage-roll.jpg",
-        mediaType: "image",
+        src: getCDNUrl("lumi-journey/greggs/greggs1.mp4"),
+        mediaType: "video",
         width: "600",
         height: "400",
       },
@@ -305,12 +320,40 @@ export const milestones: Milestone[] = [
     },
     description:
       "Visited Manchester for a weekend. The industrial architecture was fascinating, and I finally understood why people are so passionate about football here.",
-    quote: "I accidentally wore the wrong team's colors in a pub. The looks I got! Never making that mistake again.",
+    quote: "",
     tags: ["Travel", "Manchester", "Football"],
     mediaList: [
       {
         alt: "Manchester cityscape",
-        src: "/media/manchester-trip.jpg",
+        src: getCDNUrl("lumi-journey/manchester/man1.mp4"),
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Manchester cityscape",
+        src: getCDNUrl("lumi-journey/manchester/man2.mp4"),
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Manchester cityscape",
+        src: getCDNUrl("lumi-journey/manchester/man3.mp4"),
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Manchester cityscape",
+        src: getCDNUrl("lumi-journey/manchester/man4.mp4"),
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Manchester cityscape",
+        src: getCDNUrl("lumi-journey/manchester/man6.jpg"),
         mediaType: "image",
         width: "600",
         height: "400",
@@ -320,19 +363,26 @@ export const milestones: Milestone[] = [
   {
     id: 12,
     title: "First Time at the Beach",
-    date: "July 2022",
+    date: "August 2022",
     position: {
       x: 550,
       y: 550,
     },
     description:
-      "Day trip to Brighton Beach. It wasn't as warm as beaches back home, but there was something charming about the pebbles and the pier.",
-    quote: "I was the only one brave enough to dip my toes in the water. It was freezing!",
-    tags: ["Beach", "Brighton", "Summer"],
+      "Day trip to Bournemouth Beach. It wasn't as warm as beaches back home, but there was something charming about the pebbles and the pier.",
+    quote: "Had so much fun!",
+    tags: ["Beach", "Bournemouth", "Summer"],
     mediaList: [
       {
-        alt: "Brighton Beach and pier",
-        src: "/media/brighton-beach.jpg",
+        alt: "Bournemouth Beach and pier",
+        src: getCDNUrl("lumi-journey/beach/beach3.mp4"),
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Bournemouth Beach and pier",
+        src: getCDNUrl("lumi-journey/beach/beach2.jpg"),
         mediaType: "image",
         width: "600",
         height: "400",
@@ -342,21 +392,42 @@ export const milestones: Milestone[] = [
   {
     id: 13,
     title: "Second Birthday",
-    date: "November 2022",
+    date: "May 2022",
     position: {
       x: 650,
       y: 600,
     },
     description:
-      "My second birthday in the UK. This time I organized a proper dinner party at my apartment. Attempted to cook British food for my friends - with mixed results.",
+      "My second birthday in the UK. This time I organized a proper dinner outing. An amazing Italian pasta with my friends.",
     quote:
-      "My Yorkshire puddings didn't rise, but my friends pretended they were perfect. That's when I knew they were keepers.",
-    tags: ["Birthday", "Cooking", "Friends"],
+      "Birthday",
+    tags: ["Birthday", "Outing", "Friends"],
     mediaList: [
       {
         alt: "Dinner party at apartment",
-        src: "/media/second-birthday.jpg",
-        mediaType: "image",
+        src: getCDNUrl("lumi-journey/second-birthday/sb1.mp4"),
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+       {
+        alt: "Dinner party at apartment",
+        src: getCDNUrl("lumi-journey/second-birthday/sb2.mp4"),
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+       {
+        alt: "Dinner party at apartment",
+        src: getCDNUrl("lumi-journey/second-birthday/sb3.mp4"),
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+       {
+        alt: "Dinner party at apartment",
+        src: getCDNUrl("lumi-journey/second-birthday/sb4.mp4"),
+        mediaType: "video",
         width: "600",
         height: "400",
       },
@@ -365,20 +436,41 @@ export const milestones: Milestone[] = [
   {
     id: 14,
     title: "First Wedding",
-    date: "August 2022",
+    date: "September 2022",
     position: {
       x: 750,
       y: 650,
     },
     description:
-      "Got invited to a British wedding. The hats! The traditions! The dancing! It was so different from weddings in my country.",
-    quote: "I caught the bouquet and didn't know whether to be embarrassed or proud. Everyone cheered so loudly!",
+      "Got invited to Cousins wedding. Such a beautiful ceremony!",
+    quote: "The love and joy in the air were contagious. I danced like nobody was watching, even though everyone was.",
     tags: ["Wedding", "Traditions", "Celebration"],
     mediaList: [
       {
-        alt: "British wedding celebration",
-        src: "/media/first-wedding.jpg",
+        alt: "Wedding celebration",
+        src: getCDNUrl("lumi-journey/first-wedding/wed2.jpg"),
         mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Wedding celebration",
+        src: getCDNUrl("lumi-journey/first-wedding/wed3.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Wedding celebration",
+        src: getCDNUrl("lumi-journey/first-wedding/wed6.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Wedding celebration",
+        src: getCDNUrl("lumi-journey/first-wedding/wedding1.mp4"),
+        mediaType: "video",
         width: "600",
         height: "400",
       },
@@ -393,14 +485,35 @@ export const milestones: Milestone[] = [
       y: 300,
     },
     description:
-      "Saw my favorite band live at the O2 Arena. The crowd's energy was incredible, and I lost my voice from singing along to every song.",
+      "Saw one of my favorite singer live at the O2 Arena. The crowd's energy was incredible, and I lost my voice from singing along to every song.",
     quote:
-      "Standing in that crowd, singing songs I've loved for years, I felt completely at home for the first time since arriving.",
+      "Standing in that crowd, singing songs I've loved for years, I felt completely at home with my friends.",
     tags: ["Music", "Concert", "London"],
     mediaList: [
       {
         alt: "Concert crowd at O2 Arena",
-        src: "/media/first-concert.jpg",
+        src: getCDNUrl("lumi-journey/first-concert/c4.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Concert crowd at O2 Arena",
+        src: getCDNUrl("lumi-journey/first-concert/concert1.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Concert crowd at O2 Arena",
+        src: getCDNUrl("lumi-journey/first-concert/concert2.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Concert crowd at O2 Arena",
+        src: getCDNUrl("lumi-journey/first-concert/concert3.jpg"),
         mediaType: "image",
         width: "600",
         height: "400",
@@ -409,21 +522,21 @@ export const milestones: Milestone[] = [
   },
   {
     id: 16,
-    title: "First Snow",
+    title: "Snow",
     date: "December 2022",
     position: {
       x: 250,
       y: 350,
     },
     description:
-      "Woke up to the city transformed into a winter wonderland. Built my first snowman and had my first snowball fight in the park.",
-    quote: "I was like a child, catching snowflakes on my tongue and making snow angels. No regrets!",
+      "Woke up to the city transformed into a winter wonderland. Had to take pictures.",
+    quote: "I was like a child, No regrets!",
     weatherEffect: "snow",
     tags: ["Snow", "Winter", "Joy"],
     mediaList: [
       {
         alt: "Snowman in the park",
-        src: "/media/first-snow.jpg",
+        src: getCDNUrl("lumi-journey/first-snow/snow1.jpg"),
         mediaType: "image",
         width: "600",
         height: "400",
@@ -439,14 +552,42 @@ export const milestones: Milestone[] = [
       y: 250,
     },
     description:
-      "Hosted Christmas dinner for friends who couldn't go home. Burned the Yorkshire puddings but nobody seemed to mind.",
-    quote: "Nothing says 'I'm settled' like having enough chairs to invite people over for dinner.",
+      "Christmas with friends.",
+    quote: "Nothing says 'I'm settled' like having having friends who are now family to spend the holiday with.",
     weatherEffect: "snow",
-    tags: ["Christmas", "Friends", "Hosting"],
+    tags: ["Christmas", "Friends"],
     mediaList: [
       {
         alt: "Christmas dinner with friends",
-        src: "/media/second-christmas.jpg",
+        src: getCDNUrl("lumi-journey/second-christmas/2ndch.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Christmas dinner with friends",
+        src: getCDNUrl("lumi-journey/second-christmas/2ndch2.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Christmas dinner with friends",
+        src: getCDNUrl("lumi-journey/second-christmas/2ndch3.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Christmas dinner with friends",
+        src: getCDNUrl("lumi-journey/second-christmas/2ndch5.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Christmas dinner with friends",
+        src: getCDNUrl("lumi-journey/second-christmas/2ndch7.jpg"),
         mediaType: "image",
         width: "600",
         height: "400",
@@ -456,20 +597,34 @@ export const milestones: Milestone[] = [
   {
     id: 18,
     title: "Rain Rage",
-    date: "February 2023",
+    date: "December 2022",
     position: {
       x: 450,
       y: 200,
     },
     description:
-      "Had my first meltdown about the constant drizzle. Bought a proper raincoat the next day and learned to embrace it.",
-    quote: "I finally understand why British people talk about weather so much. It's a genuine emotional journey.",
+      "It was a cold rainy day in December.",
+    quote: "I finally understand why British people talk about weather so much.",
     weatherEffect: "rain",
     tags: ["Weather", "Adaptation", "Learning"],
     mediaList: [
       {
         alt: "Rainy street with umbrellas",
-        src: "/media/rain-rage.jpg",
+        src: getCDNUrl("lumi-journey/rain-rage/rain1.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Rainy street with umbrellas",
+        src: getCDNUrl("lumi-journey/rain-rage/rain.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Rainy street with umbrellas",
+        src: getCDNUrl("lumi-journey/rain-rage/rain2.jpg"),
         mediaType: "image",
         width: "600",
         height: "400",
@@ -479,21 +634,21 @@ export const milestones: Milestone[] = [
   {
     id: 19,
     title: "First Job",
-    date: "March 2023",
+    date: "Febuary 2023",
     position: {
       x: 550,
       y: 150,
     },
     description:
-      "Started my first part-time job at a local café. Learning British slang from customers became my favorite pastime.",
+      "Started my first real time job at a chemical company. Learning British slang from colleagues.",
     quote:
-      "A customer asked if I could 'pop the kettle on' and I looked for someone named Kettle. My manager still teases me about it.",
+      "colleagues were so friendly and welcoming. I felt like I was part of a big family.",
     tags: ["Work", "Language", "Culture"],
     mediaList: [
       {
         alt: "Coffee shop counter",
-        src: "/media/first-job.jpg",
-        mediaType: "image",
+        src: getCDNUrl("lumi-journey/first-job/fj5.mp4"),
+        mediaType: "video",
         width: "600",
         height: "400",
       },
@@ -502,20 +657,27 @@ export const milestones: Milestone[] = [
   {
     id: 20,
     title: "Southampton",
-    date: "April 2023",
+    date: "Febuary 2023",
     position: {
       x: 650,
       y: 200,
     },
     description:
-      "Weekend trip to Southampton to visit a university friend. Explored the maritime history and enjoyed the harbor views.",
+      "Moved up to southampton for my job. Explored the maritime history and enjoyed the harbor views.",
     quote:
       "Standing by the docks, watching ships come and go, I thought about my own journey to this country and how far I'd come.",
-    tags: ["Travel", "Southampton", "Reflection"],
+    tags: ["Travel", "Southampton", "Job"],
     mediaList: [
       {
         alt: "Southampton harbor",
-        src: "/media/southampton.jpg",
+        src: getCDNUrl("lumi-journey/southampton/sh1.mp4"),
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Southampton harbor",
+        src: getCDNUrl("lumi-journey/southampton/south.jpg"),
         mediaType: "image",
         width: "600",
         height: "400",
@@ -525,7 +687,7 @@ export const milestones: Milestone[] = [
   {
     id: 21,
     title: "Graduation",
-    date: "June 2023",
+    date: "September 2023",
     position: {
       x: 750,
       y: 250,
@@ -537,7 +699,28 @@ export const milestones: Milestone[] = [
     mediaList: [
       {
         alt: "Graduation ceremony",
-        src: "/media/graduation.jpg",
+        src: getCDNUrl("lumi-journey/grad/grad-1.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Graduation ceremony",
+        src: getCDNUrl("lumi-journey/grad/grad-2.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Graduation ceremony",
+        src: getCDNUrl("lumi-journey/grad/grad-3.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Graduation ceremony",
+        src: getCDNUrl("lumi-journey/grad/grad-4.jpg"),
         mediaType: "image",
         width: "600",
         height: "400",
@@ -547,20 +730,34 @@ export const milestones: Milestone[] = [
   {
     id: 22,
     title: "3rd Birthday",
-    date: "November 2023",
+    date: "May 2023",
     position: {
       x: 850,
       y: 300,
     },
     description:
-      "Third birthday in the UK. Celebrated with a weekend trip to the Cotswolds. Stayed in a charming cottage and explored the countryside.",
-    quote: "Three years ago, I couldn't have imagined feeling so at home in this country. What a journey it's been.",
-    tags: ["Birthday", "Cotswolds", "Reflection"],
+      "Third birthday in the UK. Celebrated with a weekend trip to bath.",
+    quote: "What a journey it's been.",
+    tags: ["Birthday", "Bath", "Reflection"],
     mediaList: [
       {
         alt: "Cotswolds countryside",
-        src: "/media/third-birthday-cotswolds.jpg",
+        src: getCDNUrl("lumi-journey/third-birthday/VID-20250518-WA0042.mp4"),
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Cotswolds countryside",
+        src: getCDNUrl("lumi-journey/third-birthday/sb4.jpg"),
         mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Cotswolds countryside",
+        src: getCDNUrl("lumi-journey/third-birthday/sb5.mp4"),
+        mediaType: "video",
         width: "600",
         height: "400",
       },
@@ -569,20 +766,27 @@ export const milestones: Milestone[] = [
   {
     id: 23,
     title: "Mini StayCation",
-    date: "January 2024",
+    date: "July 2024",
     position: {
       x: 150,
       y: 500,
     },
     description:
-      "Took a week off to explore my own city as a tourist. Discovered hidden gems I'd walked past a hundred times without noticing.",
-    quote: "Sometimes you need to look at familiar places with fresh eyes to truly appreciate them.",
+      "Took a week off to spend the week my my friends. Had fun playing games, cooking and taking pictures.",
+    quote: "Fun week off.",
     tags: ["Exploration", "City", "Discovery"],
     mediaList: [
       {
         alt: "Hidden city gem",
-        src: "/media/mini-staycation.jpg",
-        mediaType: "image",
+        src: getCDNUrl("lumi-journey/mini-staycation/mini.mp4"),
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Hidden city gem",
+        src: getCDNUrl("lumi-journey/mini-staycation/minii.mp4"),
+        mediaType: "video",
         width: "600",
         height: "400",
       },
@@ -597,14 +801,99 @@ export const milestones: Milestone[] = [
       y: 550,
     },
     description:
-      "Started a monthly tradition of trying a new restaurant with friends. Our 'Taste Tour' has become the highlight of each month.",
+      "Hang outs with friend throughout the year. From curry houses to fish and chip shops, we're eating our way through every cuisine this city has to offer.",
     quote:
       "From curry houses to fish and chip shops, we're eating our way through every cuisine this city has to offer.",
     tags: ["Food", "Friends", "Tradition"],
     mediaList: [
       {
         alt: "Friends at a restaurant",
-        src: "/media/outings.jpg",
+        src: getCDNUrl("lumi-journey/outings/outing-2.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Friends at a restaurant",
+        src: getCDNUrl("lumi-journey/outings/outing-a.mp4"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Friends at a restaurant",
+        src: getCDNUrl("lumi-journey/outings/outings-4.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Friends at a restaurant",
+        src: getCDNUrl("lumi-journey/outings/outings-5.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Friends at a restaurant",
+        src: getCDNUrl("lumi-journey/outings/outings-6.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Friends at a restaurant",
+        src: getCDNUrl("lumi-journey/outings/outings-7.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Friends at a restaurant",
+        src: getCDNUrl("lumi-journey/outings/outings-8.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+
+      {
+        alt: "Friends at a restaurant",
+        src: getCDNUrl("lumi-journey/outings/outings-9.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Friends at a restaurant",
+        src: getCDNUrl("lumi-journey/outings/outings1.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Friends at a restaurant",
+        src: getCDNUrl("lumi-journey/outings/outings3.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Friends at a restaurant",
+        src: getCDNUrl("lumi-journey/outings/outings99.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Friends at a restaurant",
+        src: getCDNUrl("lumi-journey/outings/outingsr.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Friends at a restaurant",
+        src: getCDNUrl("lumi-journey/outings/outingsw.jpg"),
         mediaType: "image",
         width: "600",
         height: "400",
@@ -614,19 +903,19 @@ export const milestones: Milestone[] = [
   {
     id: 25,
     title: "Proposal",
-    date: "March 2024",
+    date: "October 2024",
     position: {
       x: 350,
       y: 600,
     },
     description:
-      "My partner proposed at the spot where we had our first date. Complete surprise - I was speechless (before saying yes, of course).",
+      "My partner proposed at an Escape room. Complete surprise - I was speechless (before saying yes, of course).",
     quote: "In that moment, I knew for certain that this country had become my home in every sense of the word.",
     tags: ["Love", "Engagement", "Milestone"],
     mediaList: [
       {
         alt: "Engagement ring and hands",
-        src: "/media/proposal.jpg",
+        src: getCDNUrl("lumi-journey/proposal/prop1.jpg"),
         mediaType: "image",
         width: "600",
         height: "400",
@@ -636,20 +925,20 @@ export const milestones: Milestone[] = [
   {
     id: 26,
     title: "Civil Wedding",
-    date: "June 2024",
+    date: "Febuary 2025",
     position: {
       x: 400,
       y: 650,
     },
     description:
-      "Our civil ceremony at the local registry office. Small, intimate, and perfect. Followed by a celebration in a beautiful garden with close friends.",
+      "Our civil ceremony at the local registry office. Small, intimate, and perfect. Followed by a celebration in a beautiful resturant with friends.",
     quote:
       "Signing those papers made it official - this country isn't just where I live, it's where I've built my life and future.",
     tags: ["Wedding", "Love", "Milestone", "Family"],
     mediaList: [
       {
         alt: "Civil wedding ceremony",
-        src: "/media/civil-wedding.jpg",
+        src: getCDNUrl("lumi-journey/proposal/prop1.jpg"),
         mediaType: "image",
         width: "600",
         height: "400",
@@ -665,15 +954,22 @@ export const milestones: Milestone[] = [
       y: 700,
     },
     description:
-      "Fourth Christmas in the UK, first as a married couple. Hosted a massive dinner for friends and in-laws. Everything was perfect.",
+      "Fourth Christmas in the UK. Everything was perfect.",
     quote:
-      "Looking around the table at all these people who've become my family, I couldn't help but feel overwhelmingly grateful.",
+      "Photos says it all, I couldn't help but feel overwhelmingly grateful.",
     weatherEffect: "snow",
     tags: ["Christmas", "Family", "Love"],
     mediaList: [
       {
         alt: "Christmas dinner with family",
-        src: "/media/fourth-christmas.jpg",
+        src: getCDNUrl("lumi-journey/fourth-christmas/chrismas41.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Christmas dinner with family",
+        src: getCDNUrl("lumi-journey/fourth-christmas/chrismas42.jpg"),
         mediaType: "image",
         width: "600",
         height: "400",
@@ -683,21 +979,112 @@ export const milestones: Milestone[] = [
   {
     id: 28,
     title: "Random",
-    date: "May 2025",
+    date: "2021-2025",
     position: {
       x: 550,
       y: 750,
     },
     description:
-      "Spontaneous weekend away with no plans. Ended up in a tiny village with the most amazing pub and the friendliest locals.",
+      "Loads of memories.",
     quote:
       "Sometimes the best adventures are the ones you don't plan. This country still surprises me in the best ways.",
     tags: ["Adventure", "Spontaneity", "Discovery"],
     mediaList: [
       {
         alt: "Village pub exterior",
-        src: "/media/random-village-pub.jpg",
+        src: getCDNUrl("lumi-journey/random/random-1.jpg"),
         mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Village pub exterior",
+        src: getCDNUrl("lumi-journey/random/random-2.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Village pub exterior",
+        src: getCDNUrl("lumi-journey/random/random-3.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Village pub exterior",
+        src: getCDNUrl("lumi-journey/random/random-5.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Village pub exterior",
+        src: getCDNUrl("lumi-journey/random/random-a.mp4"),
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Village pub exterior",
+        src: getCDNUrl("lumi-journey/random/random-b.mp4"),
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Village pub exterior",
+        src: getCDNUrl("lumi-journey/random/random-c.mp4"),
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Village pub exterior",
+        src: getCDNUrl("lumi-journey/random/random00.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Village pub exterior",
+        src: getCDNUrl("lumi-journey/random/random34.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Village pub exterior",
+        src: getCDNUrl("lumi-journey/random/random555.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Village pub exterior",
+        src: getCDNUrl("lumi-journey/random/random6.mp4"),
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Village pub exterior",
+        src: getCDNUrl("lumi-journey/random/random78.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Village pub exterior",
+        src: getCDNUrl("lumi-journey/random/random8.jpg"),
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Village pub exterior",
+        src: getCDNUrl("lumi-journey/random/random9.mp4"),
+        mediaType: "video",
         width: "600",
         height: "400",
       },
