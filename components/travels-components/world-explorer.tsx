@@ -16,7 +16,7 @@ type City = {
   id: string
   name: string
   image: string
-  gallery:  GalleryImage[]
+  gallery: GalleryImage[]
 }
 type GalleryImage = {
   id: string
@@ -25,7 +25,7 @@ type GalleryImage = {
   caption: string
   mediaType: "image" | "video"
 }
-const cities:City[] = [
+const cities: City[] = [
   {
     id: "paris",
     name: "PARIS",
@@ -40,28 +40,84 @@ const cities:City[] = [
       },
       {
         id: "paris-2",
-        src: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a",
+        src: getCDNUrl("paris/paris2.jpg"),
         alt: "Arc de Triomphe",
         caption: "Arc de Triomphe",
         mediaType: "image",
       },
       {
         id: "paris-3",
-        src: "https://images.unsplash.com/photo-1478391679764-b2d8b3cd1e94",
+        src: getCDNUrl("paris/paris4.jpg"),
         alt: "Notre-Dame Cathedral",
         caption: "Notre-Dame Cathedral",
         mediaType: "image",
       },
       {
         id: "paris-4",
-        src: "https://images.unsplash.com/photo-1520939817895-060bdaf4fe1b",
+        src: getCDNUrl("paris/paris45.jpg"),
         alt: "Louvre Museum",
         caption: "The Louvre Museum",
         mediaType: "image",
       },
       {
         id: "paris-5",
-        src: "https://images.unsplash.com/photo-1550340499-a6c60fc8287c",
+        src: getCDNUrl("paris/paris5.jpg"),
+        alt: "Seine River",
+        caption: "Seine River",
+        mediaType: "image",
+      },
+      {
+        id: "paris-6",
+        src: getCDNUrl("paris/paris55.jpg"),
+        alt: "Seine River",
+        caption: "Seine River",
+        mediaType: "image",
+      },
+      {
+        id: "paris-7",
+        src: getCDNUrl("paris/paris555.jpg"),
+        alt: "Seine River",
+        caption: "Seine River",
+        mediaType: "image",
+      },
+      {
+        id: "paris-8",
+        src: getCDNUrl("paris/paris56.jpg"),
+        alt: "Seine River",
+        caption: "Seine River",
+        mediaType: "image",
+      },
+      {
+        id: "paris-9",
+        src: getCDNUrl("paris/paris6.jpg"),
+        alt: "Seine River",
+        caption: "Seine River",
+        mediaType: "image",
+      },
+      {
+        id: "paris-10",
+        src: getCDNUrl("paris/paris67.jpg"),
+        alt: "Seine River",
+        caption: "Seine River",
+        mediaType: "image",
+      },
+      {
+        id: "paris-11",
+        src: getCDNUrl("paris/paris70.jpg"),
+        alt: "Seine River",
+        caption: "Seine River",
+        mediaType: "image",
+      },
+      {
+        id: "paris-12",
+        src: getCDNUrl("paris/paris890.jpg"),
+        alt: "Seine River",
+        caption: "Seine River",
+        mediaType: "image",
+      },
+{
+        id: "paris-13",
+        src: getCDNUrl("paris/parisb.jpg"),
         alt: "Seine River",
         caption: "Seine River",
         mediaType: "image",
@@ -305,29 +361,29 @@ export default function WorldExplorer() {
                 </Button>
               </motion.div>
             ))}
-  <motion.div
-                
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.1 * cities.length,
-                }}
-              >
-                <Button
-                  variant={"ghost"}
-                  className={`relative h-14 w-32 overflow-hidden border-2 border-pink-500"
+            <motion.div
+
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.5,
+                delay: 0.1 * cities.length,
+              }}
+            >
+              <Button
+                variant={"ghost"}
+                className={`relative h-14 w-32 overflow-hidden border-2 border-pink-500"
                     }`}
-                  onClick={() => router.push("/love")}
-                  disabled={isTransitioning}
-                >
-                  <div
-                    className="absolute inset-0 bg-cover bg-center opacity-50 bg-slate-600"
-                   
-                  />
-                  <span className="relative z-10 font-bold">Unto the next!</span>
-                </Button>
-              </motion.div>
+                onClick={() => router.push("/love")}
+                disabled={isTransitioning}
+              >
+                <div
+                  className="absolute inset-0 bg-cover bg-center opacity-50 bg-slate-600"
+
+                />
+                <span className="relative z-10 font-bold">Unto the next!</span>
+              </Button>
+            </motion.div>
           </div>
         </div>
       </div>
