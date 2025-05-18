@@ -9,6 +9,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import ImageSidebar from "@/components/travels-components/image-sidebar"
 import ImageCarousel from "@/components/travels-components/image-carousel"
 import { useRouter } from "next/navigation"
+import { getCDNUrl } from "@/lib/utils"
 
 // Define city data
 type City = {
@@ -32,10 +33,10 @@ const cities:City[] = [
     gallery: [
       {
         id: "paris-1",
-        src: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34",
+        src: getCDNUrl("paris/paris1.mp4"),
         alt: "Eiffel Tower",
         caption: "The iconic Eiffel Tower",
-        mediaType: "image",
+        mediaType: "video",
       },
       {
         id: "paris-2",
