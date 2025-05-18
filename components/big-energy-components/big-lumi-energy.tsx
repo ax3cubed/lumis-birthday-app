@@ -254,7 +254,7 @@ const yearData = {
   2020: {
     photos: [
       {
-        src: "/Big-lumi/2020/NYSC1.jpg",
+        src: "/Big-lumi/2020/Nysc1.jpg",
         alt: "NYSC orientation camp",
         coloredItem: "white NYSC uniform",
       },
