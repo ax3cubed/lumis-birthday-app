@@ -1,5 +1,6 @@
 "use client"
 
+import { getCDNUrl } from "@/lib/utils"
 import { createContext, useContext, useState, useEffect, type ReactNode } from "react"
 
 type SoundType = "ambient" | "rain" | "snow" | "click" | "close"
@@ -27,22 +28,22 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (typeof window === "undefined") return
 
-    const ambient = new Audio("/sounds/ambient-city.mp3")
+    const ambient = new Audio(getCDNUrl("/sounds/ambient-city.mp3"))
     ambient.loop = true
     ambient.volume = 0.3
 
-    const rain = new Audio("/sounds/rain.mp3")
+    const rain = new Audio(getCDNUrl("/sounds/rain.mp3"))
     rain.loop = true
     rain.volume = 0.4
 
-    const snow = new Audio("/sounds/snow-wind.mp3")
+    const snow = new Audio(getCDNUrl("/sounds/snow-wind.mp3"))
     snow.loop = true
     snow.volume = 0.3
 
-    const click = new Audio("/sounds/click.mp3")
+    const click = new Audio(getCDNUrl("/sounds/click.mp3"))
     click.volume = 0.5
 
-    const close = new Audio("/sounds/close.mp3")
+    const close = new Audio(getCDNUrl("/sounds/close.mp3"))
     close.volume = 0.5
 
     setAudioElements({
