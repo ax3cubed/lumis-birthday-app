@@ -36,7 +36,7 @@ export default function ImageSidebar({ isOpen, onClose, mediaFiles, onImageClick
 
           {/* Sidebar */}
           <motion.div
-            className="fixed left-0 top-0 z-40 h-full w-64 bg-black/80 p-4 backdrop-blur-md fancy-scrollbar"
+            className="fixed left-0 top-0 z-40 h-full w-64 bg-black/80 p-4 backdrop-blur-md overflow-y-scroll fancy-scrollbar"
             initial={{ x: "-100%" }}
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
