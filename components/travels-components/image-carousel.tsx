@@ -120,6 +120,8 @@ export default function ImageCarousel({ isOpen, onClose, images, initialIndex }:
                         </p>
                       </div>
                       <video
+                        loop
+                        autoPlay
                         src={images[currentIndex].src}
                         controls
                         className="max-h-[80vh] max-w-full rounded-lg object-contain"
