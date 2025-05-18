@@ -5,27 +5,48 @@ export const milestones: Milestone[] = [
   {
     id: 1,
     title: "First Arrival",
-    date: "September 2021",
+    date: "January 2021",
     position: {
       x: 100,
       y: 100,
     },
     description:
-      "Landing at Heathrow with two suitcases and a heart full of dreams. The air felt different, crisp and full of possibility.",
-    quote: "I remember clutching my passport so tightly, wondering if I'd made the right decision.",
+      "Landing at Heathrow with loads of suitcases and a heart full of dreams. The air felt different, crisp and full of possibility.",
+    quote: "I remember standing beside Lumi at the airport, watching her clutch her passport so tightly, as if letting go might change everything. I could tell she was happy about this new advanture.",
     tags: ["Beginning", "Heathrow", "Excitement"],
     mediaList: [
       {
         alt: "Heathrow Airport arrival hall",
-        src: "/media/first-arrival.jpg",
-        mediaType: "image",
+        src: "https://github.com/jemmy344/cdn-images/raw/7ac17ce1ff9ec1e9158bcfd69af8918f562664ba/lumi-journey/first-arrival/flying-in.mp4",
+        mediaType: "video",
         width: "600",
         height: "400",
       },
       {
         alt: "First view of London skyline",
-        src: "/media/london-skyline.jpg",
-        mediaType: "image",
+        src: "https://github.com/jemmy344/cdn-images/raw/7ac17ce1ff9ec1e9158bcfd69af8918f562664ba/lumi-journey/first-arrival/flying-in-2.mp4",
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "First view of London skyline",
+        src: "https://github.com/jemmy344/cdn-images/raw/7ac17ce1ff9ec1e9158bcfd69af8918f562664ba/lumi-journey/first-arrival/flying-in-3.mp4",
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "First view of London skyline",
+        src: "https://github.com/jemmy344/cdn-images/blob/7ac17ce1ff9ec1e9158bcfd69af8918f562664ba/lumi-journey/first-arrival/flying-in-4.jpg",
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "First view of London skyline",
+        src: "https://github.com/jemmy344/cdn-images/raw/7ac17ce1ff9ec1e9158bcfd69af8918f562664ba/lumi-journey/first-arrival/flying-in-5.mp4",
+        mediaType: "video",
         width: "600",
         height: "400",
       }
@@ -114,8 +135,29 @@ export const milestones: Milestone[] = [
     mediaList: [
       {
         alt: "Christmas dinner table",
-        src: "/media/first-christmas.jpg",
-        mediaType: "image",
+        src: "https://github.com/jemmy344/cdn-images/raw/refs/heads/main/lumi-journey/first-christmas/fc1.mp4",
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Christmas dinner table",
+        src: "https://github.com/jemmy344/cdn-images/raw/refs/heads/main/lumi-journey/first-christmas/fc3.mp4",
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Christmas dinner table",
+        src: "https://github.com/jemmy344/cdn-images/raw/refs/heads/main/lumi-journey/first-christmas/fc4.mp4",
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Christmas dinner table",
+        src: "https://github.com/jemmy344/cdn-images/raw/refs/heads/main/lumi-journey/first-christmas/fs2.mp4",
+        mediaType: "video",
         width: "600",
         height: "400",
       },
