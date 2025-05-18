@@ -62,12 +62,19 @@ export const milestones: Milestone[] = [
     },
     description:
       "Walking through the campus for the first time, getting lost between buildings, and finally finding my department. The architecture was so different from back home.",
-    quote: "The campus was huge! I must have walked in circles for an hour before finding the right building.",
+    quote: "The campus was huge! ",
     tags: ["University", "Campus", "Student Life"],
     mediaList: [
       {
         alt: "University campus buildings",
-        src: "/media/university-campus.jpg",
+        src: "https://github.com/jemmy344/cdn-images/blob/main/lumi-journey/first-uni-visit/fu-1.jpg?raw=true",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "University campus buildings",
+        src: "https://github.com/jemmy344/cdn-images/blob/main/lumi-journey/first-uni-visit/fu-2.jpg?raw=true",
         mediaType: "image",
         width: "600",
         height: "400",
@@ -77,20 +84,34 @@ export const milestones: Milestone[] = [
   {
     id: 3,
     title: "First Shared Flat",
-    date: "October 2021",
+    date: "January 2021",
     position: {
       x: 300,
       y: 150,
     },
     description:
-      "Moving into my first shared accommodation with three other international students. We were all equally confused about how the washing machine worked.",
+      "Moving into my first shared accommodation with two other international students and best friend.",
     quote:
-      "Four strangers from four different countries trying to figure out British appliances - it was chaos but so much fun.",
+      "strangers from different countries",
     tags: ["Housing", "Flatmates", "Student Life"],
     mediaList: [
       {
         alt: "Shared student flat kitchen",
-        src: "/media/shared-flat.jpg",
+        src: "https://github.com/jemmy344/cdn-images/raw/refs/heads/main/lumi-journey/first-shared-flat/aaflat.mp4",
+        mediaType: "video",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Shared student flat kitchen",
+        src: "https://github.com/jemmy344/cdn-images/raw/refs/heads/main/lumi-journey/first-shared-flat/aflat.jpg",
+        mediaType: "image",
+        width: "600",
+        height: "400",
+      },
+      {
+        alt: "Shared student flat kitchen",
+        src: "https://github.com/jemmy344/cdn-images/raw/refs/heads/main/lumi-journey/first-shared-flat/aflat8.jpg",
         mediaType: "image",
         width: "600",
         height: "400",
@@ -100,20 +121,20 @@ export const milestones: Milestone[] = [
   {
     id: 4,
     title: "First Birthday",
-    date: "November 2021",
+    date: "May 2021",
     position: {
       x: 400,
       y: 180,
     },
     description:
-      "Celebrated my birthday in a new country for the first time. My flatmates surprised me with a cake and took me to a proper British pub.",
-    quote: "They sang 'Happy Birthday' so loudly that the entire pub joined in. I was mortified but secretly loved it.",
-    tags: ["Celebration", "Friends", "Pub"],
+      "Celebrated my birthday in a new country for the first time. My bestie surprised me with a cake.",
+    quote: " 'Happy Birthday' ",
+    tags: ["Celebration", "Friends"],
     mediaList: [
       {
-        alt: "Birthday cake in a pub",
-        src: "/media/first-birthday.jpg",
-        mediaType: "image",
+        alt: "Birthday cake",
+        src: "https://github.com/jemmy344/cdn-images/raw/refs/heads/main/lumi-journey/first-birthday/first-bd.mp4",
+        mediaType: "video",
         width: "600",
         height: "400",
       },
