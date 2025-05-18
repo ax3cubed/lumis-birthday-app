@@ -99,6 +99,14 @@ const media: Media[] = [
     accentItem: "flower",
     mediaType: "image",
   },
+{
+    id: 10,
+    src: getCDNUrl("relationship/love-11.mp4"),
+    caption: "Post Court Wedding Pictures",
+    accentColor: "orange",
+    accentItem: "flower",
+    mediaType: "video",
+  },
 ]
 
 export default function MediaCarousel() {
