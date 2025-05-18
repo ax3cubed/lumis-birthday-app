@@ -4,6 +4,7 @@ import { useState, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Download, Gift, FileText } from "lucide-react"
 import Typewriter from "@/components/final-orb-components/Typewriter"
+import { getCDNUrl } from "@/lib/utils"
 
 // Letter content
 const letterContent = [
@@ -18,9 +19,9 @@ const letterContent = [
 
 // Media content - supports both images and videos
 const mediaContent = [
-  { type: "image", src: "/couple-sunset-beach-walk.png", alt: "Memories together" },
-  { type: "video", src: "/placeholder.svg?key=video1", alt: "Birthday video" },
-  { type: "image", src: "/placeholder.svg?key=image2", alt: "Special moment" },
+  { type: "video", src: getCDNUrl("orb/orb-1.mp4"), alt: "Memories together"},
+  { type: "image", src: getCDNUrl("orb/orb-2.jpg"), alt: "Birthday video" },
+  { type: "video", src: getCDNUrl("orb/orb-3.mp4"), alt: "Special moment" },
 ]
 
 export default function LoveLetterExperience() {
