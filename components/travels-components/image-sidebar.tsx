@@ -69,7 +69,7 @@ export default function ImageSidebar({ isOpen, onClose, mediaFiles, onImageClick
                         src={media.src}
                         controls
                         className="h-full w-full object-cover"
-                        poster={"https://raw.githubusercontent.com/jemmy344/cdn-images/refs/heads/main/paris.jpg"}
+                        // poster={"https://raw.githubusercontent.com/jemmy344/cdn-images/refs/heads/main/paris.jpg"}
                       />
                     ) : (
                       <img
