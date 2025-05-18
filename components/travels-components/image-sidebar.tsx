@@ -63,6 +63,8 @@ export default function ImageSidebar({ isOpen, onClose, mediaFiles, onImageClick
                   <div className="relative aspect-video w-full overflow-hidden rounded-md">
                     {media.mediaType === "video" ? (
                       <video
+                        loop
+                        autoPlay
                         src={media.src}
                         controls
                         className="h-full w-full object-cover"
