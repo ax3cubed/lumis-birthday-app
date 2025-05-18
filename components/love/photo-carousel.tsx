@@ -117,6 +117,8 @@ export default function MediaCarousel() {
   const [isPaused, setIsPaused] = useState(false)
   const [isMuted, setIsMuted] = useState(true)
   const [isVideoReady, setIsVideoReady] = useState(false)
+  const [positionX, setPositionX] = useState(0)
+  const [positionY, setPositionY] = useState(0)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
   const currentMedia = media[currentIndex]
@@ -286,6 +288,7 @@ export default function MediaCarousel() {
                         handleNext()
                       }
                     }}
+                    style={{ transform: `translate(${positionX}px, ${positionY}px)` }}
                   />
                 </div>
               ) : (
@@ -295,6 +298,7 @@ export default function MediaCarousel() {
                   fill
                   className="object-cover"
                   priority
+                  style={{ transform: `translate(${positionX}px, ${positionY}px)` }}
                 />
               )}
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70"></div>
@@ -384,6 +388,34 @@ export default function MediaCarousel() {
         {isPaused ? <Play size={14} /> : <Pause size={14} />}
         <span>{isPaused ? "Auto-play" : "Pause"}</span>
       </button>
+
+      {/* Position sliders */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 bg-black/40 rounded-lg px-4 py-2">
+        <label className="flex items-center gap-2 text-white text-xs">
+          X:
+          <input
+            type="range"
+            min={-200}
+            max={200}
+            value={positionX}
+            onChange={e => setPositionX(Number(e.target.value))}
+            className="w-32"
+          />
+          <span>{positionX}px</span>
+        </label>
+        <label className="flex items-center gap-2 text-white text-xs">
+          Y:
+          <input
+            type="range"
+            min={-200}
+            max={200}
+            value={positionY}
+            onChange={e => setPositionY(Number(e.target.value))}
+            className="w-32"
+          />
+          <span>{positionY}px</span>
+        </label>
+      </div>
     </div>
   )
 }
