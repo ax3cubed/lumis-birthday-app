@@ -100,7 +100,8 @@ export default function ChildhoodPage() {
             >
               <div ref={containerRef} className="relative h-[500px] md:h-[600px] mb-12">
                 <CircularGallery
-                  items={childhoodData.map((item) => ({
+                  items={childhoodData.map((item, index) => ({
+                    id: index,
                     image: item.image,
                     text: `Little ${item.age}`,
                   }))}

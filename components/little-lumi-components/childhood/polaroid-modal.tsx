@@ -86,37 +86,7 @@ export default function PolaroidModal({ polaroid, onClose }: PolaroidModalProps)
           />
         </div>
 
-        <div className="bg-purple-950/90 backdrop-blur-sm rounded-xl p-6 border border-purple-800/50 shadow-lg">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-xl font-gothic text-purple-200">Age {polaroid.age}</h3>
-            <motion.div
-              animate={{
-                scale: [1, 1.2, 1],
-                rotate: [0, 5, 0, -5, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Number.POSITIVE_INFINITY,
-                repeatDelay: 2,
-              }}
-              className="text-2xl"
-            >
-              {polaroid.emoji}
-            </motion.div>
-          </div>
-
-          <div className="min-h-[60px] font-handwritten text-purple-200 text-lg">
-            {typedText}
-            {isTyping && (
-              <motion.span
-                animate={{ opacity: [1, 0, 1] }}
-                transition={{ duration: 0.8, repeat: Number.POSITIVE_INFINITY }}
-              >
-                |
-              </motion.span>
-            )}
-          </div>
-        </div>
+         
 
         {/* Close button */}
         <motion.button

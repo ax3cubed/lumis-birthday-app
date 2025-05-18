@@ -237,8 +237,55 @@ class Media {
     this.createMesh();
     this.createTitle();
     this.onResize();
+
   }
 
+  isPointInside(x: number, y: number): boolean {
+    // Convert screen coordinates to normalized device coordinates (-1 to 1)
+    const ndcX = (x / this.screen.width) * 2 - 1;
+    const ndcY = -((y / this.screen.height) * 2 - 1); // Y is flipped in WebGL
+
+    // Get media position in normalized device coordinates
+    const mediaX = this.plane.position.x / (this.viewport.width / 2);
+    const mediaY = this.plane.position.y / (this.viewport.height / 2);
+
+    // Get media dimensions in normalized device coordinates
+    const halfWidth = this.plane.scale.x / (this.viewport.width / 2);
+    const halfHeight = this.plane.scale.y / (this.viewport.height / 2);
+
+    // Account for rotation if necessary (simplified)
+    const rotationZ = this.plane.rotation.z;
+
+    if (Math.abs(rotationZ) < 0.01) {
+      // No significant rotation, use simple box check
+      return (
+        ndcX >= mediaX - halfWidth &&
+        ndcX <= mediaX + halfWidth &&
+        ndcY >= mediaY - halfHeight &&
+        ndcY <= mediaY + halfHeight
+      );
+    } else {
+      // With rotation, transform the point to the media's local space
+      const cos = Math.cos(-rotationZ);
+      const sin = Math.sin(-rotationZ);
+
+      // Translate point to origin of media
+      const dx = ndcX - mediaX;
+      const dy = ndcY - mediaY;
+
+      // Rotate point around origin
+      const localX = dx * cos - dy * sin;
+      const localY = dx * sin + dy * cos;
+
+      // Check if the rotated point is inside the media bounds
+      return (
+        localX >= -halfWidth &&
+        localX <= halfWidth &&
+        localY >= -halfHeight &&
+        localY <= halfHeight
+      );
+    }
+  }
   createShader() {
     const texture = new Texture(this.gl, { generateMipmaps: false });
     this.program = new Program(this.gl, {
@@ -411,7 +458,7 @@ class Media {
 }
 
 interface AppConfig {
-  items?: { image: string; text: string }[];
+  items?: { id: number, image: string; text: string }[];
   bend?: number;
   textColor?: string;
   borderRadius?: number;
@@ -419,6 +466,7 @@ interface AppConfig {
 }
 
 class App {
+  onMediaClick?: (media: Media) => void;
   container: HTMLElement;
   scroll: {
     ease: number;
@@ -434,7 +482,7 @@ class App {
   scene!: Transform;
   planeGeometry!: Plane;
   medias: Media[] = [];
-  mediasImages: { image: string; text: string }[] = [];
+  mediasImages: { id: number, image: string; text: string }[] = [];
   screen!: { width: number; height: number };
   viewport!: { width: number; height: number };
   raf: number = 0;
@@ -445,6 +493,7 @@ class App {
   boundOnTouchMove!: (e: MouseEvent | TouchEvent) => void;
   boundOnTouchUp!: () => void;
 
+  onClick!: (e: MouseEvent) => Media | undefined;
   isDown: boolean = false;
   start: number = 0;
 
@@ -497,7 +546,7 @@ class App {
   }
 
   createMedias(
-    items: { image: string; text: string }[] | undefined,
+    items: { id: number, image: string; text: string }[] | undefined,
     bend: number = 1,
     textColor: string,
     borderRadius: number,
@@ -505,50 +554,62 @@ class App {
   ) {
     const defaultItems = [
       {
+        id: 1,
         image: `https://picsum.photos/seed/1/800/600?grayscale`,
         text: "Bridge",
       },
       {
+        id: 2,
         image: `https://picsum.photos/seed/2/800/600?grayscale`,
         text: "Desk Setup",
       },
       {
+        id: 3,
         image: `https://picsum.photos/seed/3/800/600?grayscale`,
         text: "Waterfall",
       },
       {
+        id: 4,
         image: `https://picsum.photos/seed/4/800/600?grayscale`,
         text: "Strawberries",
       },
       {
+        id: 5,
         image: `https://picsum.photos/seed/5/800/600?grayscale`,
         text: "Deep Diving",
       },
       {
+        id: 6,
         image: `https://picsum.photos/seed/16/800/600?grayscale`,
         text: "Train Track",
       },
       {
+        id: 7,
         image: `https://picsum.photos/seed/17/800/600?grayscale`,
         text: "Santorini",
       },
       {
+        id: 8,
         image: `https://picsum.photos/seed/8/800/600?grayscale`,
         text: "Blurry Lights",
       },
       {
+        id: 9,
         image: `https://picsum.photos/seed/9/800/600?grayscale`,
         text: "New York",
       },
       {
+        id: 10,
         image: `https://picsum.photos/seed/10/800/600?grayscale`,
         text: "Good Boy",
       },
       {
+        id: 11,
         image: `https://picsum.photos/seed/21/800/600?grayscale`,
         text: "Coastline",
       },
       {
+        id: 12,
         image: `https://picsum.photos/seed/12/800/600?grayscale`,
         text: "Palm Trees",
       },
@@ -640,7 +701,27 @@ class App {
     this.scroll.last = this.scroll.current;
     this.raf = window.requestAnimationFrame(this.update.bind(this));
   }
+  getClickedMedia(e: MouseEvent): Media | undefined {
+    // Convert mouse position to be relative to canvas
+    const rect = (this.renderer.gl.canvas as HTMLCanvasElement).getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
+    // Check each media from front to back (reverse order of rendering)
+    // This ensures we pick the top-most visible media when they overlap
+    for (let i = this.medias.length - 1; i >= 0; i--) {
+      const media = this.medias[i];
+
+      // Skip media that are not visible in viewport
+      if (media.isBefore || media.isAfter) continue;
+
+      if (media.isPointInside(x, y)) {
+        return media;
+      }
+    }
+
+    return undefined;
+  }
   addEventListeners() {
     this.boundOnResize = this.onResize.bind(this);
     this.boundOnWheel = this.onWheel.bind(this);
@@ -656,6 +737,31 @@ class App {
     window.addEventListener("touchstart", this.boundOnTouchDown);
     window.addEventListener("touchmove", this.boundOnTouchMove);
     window.addEventListener("touchend", this.boundOnTouchUp);
+    (this.renderer.gl.canvas as HTMLCanvasElement).addEventListener("click", (e) => {
+      // Prevent click from triggering touchup/down events
+      e.preventDefault();
+
+      const clickedMedia = this.getClickedMedia(e);
+
+      if (clickedMedia) {
+        // Call the callback if provided
+        if (this.onMediaClick) {
+          this.onMediaClick(clickedMedia);
+        }
+
+        // Dispatch a custom event for wider integration
+        const mediaClickEvent = new CustomEvent("mediaClick", {
+          detail: {
+            media: clickedMedia,
+            id: clickedMedia.index,
+            image: clickedMedia.image,
+            text: clickedMedia.text
+          }
+        });
+
+        this.container.dispatchEvent(mediaClickEvent);
+      }
+    });
   }
 
   destroy() {
@@ -682,7 +788,7 @@ class App {
 }
 
 interface CircularGalleryProps {
-  items?: { image: string; text: string }[];
+  items?: { id: number, image: string; text: string }[];
   bend?: number;
   textColor?: string;
   borderRadius?: number;
@@ -700,7 +806,7 @@ export default function CircularGallery({
 }: CircularGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [selectedPolaroid, setSelectedPolaroid] = useState<number | null>(null)
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [app, setApp] = useState<App | null>(null);
   // Create polaroid data with additional info from the childData
   const polaroidItems = items ? items.map((item, index) => ({
     ...item,
@@ -717,6 +823,7 @@ export default function CircularGallery({
       borderRadius,
       font,
     });
+    setApp(app);
     return () => {
       app.destroy();
     };
@@ -732,30 +839,26 @@ export default function CircularGallery({
       const y = e.clientY - rect.top
 
       // Find the closest polaroid to the click position
-      // This is a simplified approach - in a real implementation,
-      // you would get the actual clicked polaroid from the gallery instance
       const centerX = rect.width / 2
       const centerY = rect.height / 2
       const angle = Math.atan2(y - centerY, x - centerX)
       const numItems = items ? items.length : 0
-      const index = Math.floor((angle / (2 * Math.PI) + 0.5) * numItems) % numItems
+      if (numItems === 0) return
+      let normalizedAngle = angle
+      if (normalizedAngle < 0) normalizedAngle += 2 * Math.PI
 
-      if (index >= 0 && index < polaroidItems.length) {
-        setSelectedPolaroid(index)
 
-        // Play click sound
-        const audio = new Audio("/sounds/toy-pickup.mp3")
-        audio.volume = 0.2
-        audio.play().catch((err) => console.log("Audio play failed:", err))
+      // Play click sound
+      const audio = new Audio("/sounds/toy-pickup.mp3")
+      audio.volume = 0.2
+      audio.play().catch((err) => console.log("Audio play failed:", err))
 
-        // After a brief animation, show the modal
-        setTimeout(() => {
-          onPolaroidClick(polaroidItems[index])
-          setSelectedPolaroid(null)
-        }, 500)
-      }
+
+
     }
 
+
+ 
     containerRef.current.addEventListener("click", handleClick)
 
     return () => {
@@ -763,8 +866,33 @@ export default function CircularGallery({
         containerRef.current.removeEventListener("click", handleClick)
       }
     }
+
+
+
   }, [items, onPolaroidClick, polaroidItems])
 
+useEffect(() => {
+ if (!containerRef.current || !onPolaroidClick) return
+    const handleMediaClick = (e: Event) => {
+      // Cast the event to CustomEvent to access detail property
+      const customEvent = e as CustomEvent;
+      const media = customEvent.detail.media;
+      if (media) {
+        const polaroid = polaroidItems[media.index % polaroidItems.length];
+        setSelectedPolaroid(polaroid.id);
+        onPolaroidClick(polaroid);
+      }
+    };
+
+    containerRef.current.addEventListener("mediaClick", handleMediaClick);
+
+    return () => {
+      if (containerRef.current) {
+        containerRef.current.removeEventListener("mediaClick", handleMediaClick);
+      }
+    };
+
+}, [items, ])
   return (
     <div className="relative w-full h-full">
       <div
@@ -775,45 +903,7 @@ export default function CircularGallery({
         style={{ minHeight: 400, minWidth: 400, zIndex: 10, position: "relative" }}
       />
 
-      {/* Polaroid hover hints */}
-      <div className="absolute inset-0 pointer-events-none">
-        {hoveredIndex !== null && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
-                      bg-purple-900/80 text-purple-200 px-3 py-1 rounded-md
-                      border border-purple-500 shadow-glow-purple"
-          >
-            {polaroidItems[hoveredIndex].hint}
-          </motion.div>
-        )}
 
-        {/* Selected polaroid animation */}
-        {selectedPolaroid !== null && (
-          <motion.div
-            initial={{ scale: 1, opacity: 1 }}
-            animate={{
-              scale: [1, 1.2, 1.2, 0.8],
-              opacity: [1, 1, 0.8, 0],
-              y: [0, -20, -40, -60],
-            }}
-            transition={{
-              duration: 0.5,
-              times: [0, 0.3, 0.6, 1],
-            }}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
-                      w-40 h-48 bg-white rounded-md overflow-hidden shadow-xl"
-          >
-            <img
-              src={polaroidItems[selectedPolaroid].image || "/placeholder.svg"}
-              alt={polaroidItems[selectedPolaroid].hint}
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
-        )}
-      </div>
     </div>
   )
 }
